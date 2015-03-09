@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Soluciones de anagramas -->
+
+    <!-- Solución fase inmunización -->
+    <string name="solution_phase1_anagram1">GALLO</string>
+    <string name="solution_phase1_anagram2">ÁLBUM</string>
+    <string name="solution_phase1_anagram3">ROMBO</string>
+    <string name="solution_phase1_anagram4">ÁRABE</string>
+    <string name="solution_phase1_anagram5">ARAÑA</string>
+    <string name="solution_phase1_anagram6">ARENA</string>
+    <string name="solution_phase1_anagram7">BALÓN</string>
+    <string name="solution_phase1_anagram8">BRUJA</string>
+    <string name="solution_phase1_anagram9">CIEGO</string>
+    <string name="solution_phase1_anagram10">CLASE</string>
+    <string name="solution_phase1_anagram11">DISCO</string>
+    <string name="solution_phase1_anagram12">ENANO</string>
+    <string name="solution_phase1_anagram13">HUMOR</string>
+    <string name="solution_phase1_anagram14">LIMBO</string>
+    <string name="solution_phase1_anagram15">NIETO</string>
+    <string name="solution_phase1_anagram16">OLIVO</string>
+    <string name="solution_phase1_anagram17">PUNTO</string>
+    <string name="solution_phase1_anagram18">SALUD</string>
+    <string name="solution_phase1_anagram19">CEBRA</string>
+    <string name="solution_phase1_anagram20">VARÓN</string>
+
+    <!-- Fase Pretratamiento con solución -->
+    <string name="solution_phase2_anagram1">GALLO</string>
+    <string name="solution_phase2_anagram2">ÁLBUM</string>
+    <string name="solution_phase2_anagram3">ROMBO</string>
+    <string name="solution_phase2_anagram4">ÁRABE</string>
+    <string name="solution_phase2_anagram5">ARAÑA</string>
+    <string name="solution_phase2_anagram6">ARENA</string>
+    <string name="solution_phase2_anagram7">BALÓN</string>
+    <string name="solution_phase2_anagram8">BRUJA</string>
+    <string name="solution_phase2_anagram9">CIEGO</string>
+    <string name="solution_phase2_anagram10">CLASE</string>
+    <string name="solution_phase2_anagram11">DISCO</string>
+    <string name="solution_phase2_anagram12">ENANO</string>
+    <string name="solution_phase2_anagram13">HUMOR</string>
+    <string name="solution_phase2_anagram14">LIMBO</string>
+    <string name="solution_phase2_anagram15">NIETO</string>
+    <string name="solution_phase2_anagram16">OLIVO</string>
+    <string name="solution_phase2_anagram17">PUNTO</string>
+    <string name="solution_phase2_anagram18">SALUD</string>
+    <string name="solution_phase2_anagram19">CEBRA</string>
+    <string name="solution_phase2_anagram20">VARÓN</string>
+
+    <!-- Fase Pretratamiento sin solución -->
+    <string name="solution_phase3_anagram1">XXXXX</string>
+    <string name="solution_phase3_anagram2">XXXXX</string>
+    <string name="solution_phase3_anagram3">XXXXX</string>
+    <string name="solution_phase3_anagram4">XXXXX</string>
+    <string name="solution_phase3_anagram5">XXXXX</string>
+    <string name="solution_phase3_anagram6">XXXXX</string>
+    <string name="solution_phase3_anagram7">XXXXX</string>
+    <string name="solution_phase3_anagram8">XXXXX</string>
+    <string name="solution_phase3_anagram9">XXXXX</string>
+    <string name="solution_phase3_anagram10">XXXXX</string>
+    <string name="solution_phase3_anagram11">XXXXX</string>
+    <string name="solution_phase3_anagram12">XXXXX</string>
+    <string name="solution_phase3_anagram13">XXXXX</string>
+    <string name="solution_phase3_anagram14">XXXXX</string>
+    <string name="solution_phase3_anagram15">XXXXX</string>
+    <string name="solution_phase3_anagram16">XXXXX</string>
+    <string name="solution_phase3_anagram17">XXXXX</string>
+    <string name="solution_phase3_anagram18">XXXXX</string>
+    <string name="solution_phase3_anagram19">XXXXX</string>
+    <string name="solution_phase3_anagram20">XXXXX</string>
+
+    <!-- Fase Prueba -->
+    <string name="solution_phase4_anagram1">ADOBO</string>
+    <string name="solution_phase4_anagram2">BOZAL</string>
+    <string name="solution_phase4_anagram3">CEBRA</string>
+    <string name="solution_phase4_anagram4">ERIZO</string>
+    <string name="solution_phase4_anagram5">FRENO</string>
+    <string name="solution_phase4_anagram6">ICONO</string>
+    <string name="solution_phase4_anagram7">IDEAL</string>
+    <string name="solution_phase4_anagram8">MENTE</string>
+    <string name="solution_phase4_anagram9">ORUGA</string>
+    <string name="solution_phase4_anagram10">PRIMO</string>
+    <string name="solution_phase4_anagram11">ÁNGEL</string>
+    <string name="solution_phase4_anagram12">TIGRE</string>
+    <string name="solution_phase4_anagram13">BROMA</string>
+    <string name="solution_phase4_anagram14">CIRCO</string>
+    <string name="solution_phase4_anagram15">CLIMA</string>
+    <string name="solution_phase4_anagram16">LIMÓN</string>
+    <string name="solution_phase4_anagram17">CIVIL</string>
+    <string name="solution_phase4_anagram18">PULPO</string>
+    <string name="solution_phase4_anagram19">CACAO</string>
+    <string name="solution_phase4_anagram20">TOTAL</string>
+
+
+</resources>

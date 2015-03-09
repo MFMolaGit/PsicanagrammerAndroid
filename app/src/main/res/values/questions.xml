@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="questions">
+        <item>@string/question1</item>
+        <item>@string/question2</item>
+        <item>@string/question3</item>
+        <item>@string/question4</item>
+        <item>@string/question5</item>
+        <item>@string/question6</item>
+    </string-array>
+
+    <string name="question1">Los resultados obtenidos se deben totalmente a mi capacidad.</string>
+    <string name="question2">Los resultados obtenidos se deben totalmente a la dificultad de la tarea.</string>
+    <string name="question3">Tu rendimiento en otras tareas verbales o similares será totalmente el mismo.</string>
+    <string name="question4">Tu rendimiento en otras tareas verbales o similares será totalmente diferente.</string>
+    <string name="question5">En otro tipo de tareas tu rendimiento será totalmente similar.</string>
+    <string name="question6">En otro tipo de tareas tu rendimiento será totalmente diferente.</string>
+
+    <string name="questionDisagree">Muy en desacuerdo</string>
+    <string name="questionAgree">Muy de acuerdo</string>
+
+</resources>

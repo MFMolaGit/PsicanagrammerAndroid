@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Grupos -->
+    <string-array name="groups">
+        <item>@string/group1</item>
+        <item>@string/group2</item>
+        <item>@string/group3</item>
+        <item>@string/group4</item>
+    </string-array>
+
+    <string name="group1">Inmunizado</string>
+    <string-array name="group1_phases">
+        <item>@string/phase1</item>
+        <item>@string/phase3</item>
+        <item>@string/phase4</item>
+    </string-array>
+
+    <string name="group2">Resoluble</string>
+    <string-array name="group2_phases">
+        <item>@string/phase2</item>
+        <item>@string/phase4</item>
+    </string-array>
+
+    <string name="group3">Indefenso</string>
+    <string-array name="group3_phases">
+        <item>@string/phase3</item>
+        <item>@string/phase4</item>
+    </string-array>
+
+    <string name="group4">Control</string>
+    <string-array name="group4_phases">
+        <item>@string/phase4</item>
+    </string-array>
+
+</resources>

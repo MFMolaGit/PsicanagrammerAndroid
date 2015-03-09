@@ -1,0 +1,256 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="psicanagrammer.gevapps.com.psicanagrammer.ui.AnagrammerActivity"
+    android:background="@drawable/background2">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleView"
+            android:background="@drawable/psicanagrammer"
+            android:contentDescription="@string/title"
+            android:adjustViewBounds="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/info_text"
+            android:id="@+id/infoView"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:singleLine="false"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:padding="50sp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="0.1">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_input"
+                android:id="@+id/inputLabel"
+                android:textSize="35sp"
+                android:layout_weight="0.5"
+                android:textColor="#ff3e8a3e"
+                android:textStyle="bold|italic"
+                android:layout_gravity="bottom" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anagram"
+                android:id="@+id/anagram"
+                android:textSize="30sp"
+                android:layout_weight="0.5"
+                android:layout_gravity="bottom" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:id="@+id/letter1"
+                android:onClick="addLetter"
+                android:textSize="40sp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B"
+                android:id="@+id/letter2"
+                android:onClick="addLetter"
+                android:textSize="40sp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C"
+                android:id="@+id/letter3"
+                android:onClick="addLetter"
+                android:textSize="40sp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="D"
+                android:id="@+id/letter4"
+                android:onClick="addLetter"
+                android:textSize="40sp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E"
+                android:id="@+id/letter5"
+                android:onClick="addLetter"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/musgobg_up"
+            android:baselineAligned="false"
+            android:backgroundTintMode="screen">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timesView"
+                android:layout_gravity="center|left"
+                android:layout_weight="0.33"
+                android:textSize="20sp"
+                android:textColor="#ff000eff"
+                android:text="0"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/letterCountView"
+                android:layout_gravity="center|left"
+                android:layout_weight="0.33"
+                android:textSize="20sp"
+                android:textColor="#ff000000"
+                android:text="0"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/failsView"
+                android:layout_gravity="center|left"
+                android:layout_weight="0.33"
+                android:textSize="20sp"
+                android:textColor="#ffff0010"
+                android:text="0"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/correctsView"
+                android:layout_gravity="center|left"
+                android:layout_weight="0.33"
+                android:textSize="30sp"
+                android:textColor="@color/green_correct"
+                android:text="0"
+                android:visibility="visible"
+                android:backgroundTintMode="screen" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timeoutsView"
+                android:layout_gravity="center|left"
+                android:layout_weight="0.33"
+                android:textSize="30sp"
+                android:textColor="@color/red_fail"
+                android:text="0"
+                android:visibility="visible"
+                android:backgroundTintMode="screen" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:baselineAligned="false"
+            android:background="@drawable/musgobg_down">
+
+            <Chronometer
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chronometer"
+                android:textSize="40sp"
+                android:phoneNumber="false"
+                android:numeric="integer"
+                android:gravity="right"
+                android:enabled="true"
+                android:layout_weight="0.1"
+                android:layout_gravity="left"
+                android:backgroundTintMode="screen" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/groupCountView"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                android:textSize="20sp"
+                android:textColor="#ff4df1ff"
+                android:text="G"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/phaseCountView"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                android:textSize="20sp"
+                android:textColor="#ffff62e5"
+                android:text="F"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/anagramCountView"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                android:textSize="20sp"
+                android:textColor="#ffffac14"
+                android:text="A"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timeLeftView"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                android:textSize="40sp"
+                android:textColor="@color/yellow"
+                android:text="00"
+                android:visibility="visible"
+                android:backgroundTintMode="screen" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

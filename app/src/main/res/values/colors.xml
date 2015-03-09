@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="red" type="color">#FFC3261B</item>
+    <item name="yellow" type="color">#FFE2EA27</item>
+    <item name="green" type="color">#FF43C32F</item>
+    <item name="green_correct" type="color">#AA13F000</item>
+    <item name="red_fail" type="color">#F1F3261B</item>
+    <item name="black" type="color">#111111</item>
+    <item name="white" type="color">#FFFFFF</item>
+
+</resources>

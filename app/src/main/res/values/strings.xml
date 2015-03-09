@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="rn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_title">Psicanagram</string>
+    <string name="label_input">Palabra:</string>
+    <string name="anagram">ANAGRAM</string>
+    <string name="user_input">Introduce respuesta</string>
+    <string name="info_text">Bienvenido a psicanagram</string>
+    <string name="buttonChronoStop_text">Stop</string>
+    <string name="buttonChronoStart_text">Start</string>
+    <string name="action_settings">Configuración</string>
+    <string name="app_name">Psicanagram</string>
+    <string name="responseOk">Correcto</string>
+    <string name="responseKo">Incorrecto</string>
+    <string name="responseTout">Fuera de tiempo</string>
+    <string name="title">Psicanagrammer</string>
+    <string name="groupLabel">Grupo: </string>
+    <string name="pacientNameLabel">Paciente: </string>
+    <string name="startLabelButton">Empezar prueba</string>
+    <string name="pacientName">Introduce nombre</string>
+    <string name="configError">Debes introducir un nombre para continuar</string>
+    <string name="readyLabelButton">Listo para empezar</string>
+    <string name="title_activity_instruction_anagrams">InstructionActivity</string>
+    <string name="instructions1">A continuación aparecerá en la pantalla  una secuencia de palabras desordenadas, usted dispondrá de <xliff:g id="seconds" example="30">%s</xliff:g> segundos para ordenar las letras y formar la palabra. Debe pulsar las teclas para escribir la palabra ordenada. Ánimo y mucha suerte.</string>
+    <string name="instructions2">A continuación vas a encontrar una serie de cuestiones relacionadas con la tarea de anagramas que acabas de realizar. Indica el grado en que estás de acuerdo con cada una, en una escala del 1 (estás muy de acuerdo con la afirmación) al 10 (estás muy en desacuerdo con la afirmación) pulsando el número correspondiente.</string>
+    <string name="title_activity_questions">QuestionsActivity</string>
+    <string name="endQuestionsLabelButton">Confirmar respuestas</string>
+    <string name="emptyQuestionsList">Sin preguntas disponibles</string>
+    <string name="pointsLabel">Puntos</string>
+    <string name="questionLabel">Pregunta</string>
+    <string name="timeLimitLabel">Tiempo límite (segundos): </string>
+    <string name="endMessage">Ha finalizado la prueba con éxito. Muchas gracias por su colaboración.</string>
+    <string name="closeApp">Salir</string>
+    <string name="title_activity_anagrammer">AnagrammerActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_instructions">InstructionsActivity</string>
+    <string name="enabledTotalTimeLabel">Permitir ver transcurso del tiempo</string>
+    <string name="enabledTimeleftLabel">Permitir ver tiempo restante</string>
+    <string name="enabledCorrectsLabel">Permitir ver número de aciertos</string>
+    <string name="enabledCorrectsOverTotalLabel">Permitir ver aciertos sobre total</string>
+    <string name="enabledFailsLabel">Permitir ver número de fallos</string>
+    <string name="enabledFailsOverTotalLabel">Permitir ver fallos sobre total</string>
+</resources>
