@@ -110,6 +110,11 @@ public class Psicanagram extends Activity {
             }
     }
 
+	public void back(final View view) {
+		Intent intent = new Intent(this, MainMenuActivity.class);
+		startActivity(intent);
+	}
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

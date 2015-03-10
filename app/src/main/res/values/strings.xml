@@ -17,6 +17,7 @@
     <string name="groupLabel">Grupo: </string>
     <string name="pacientNameLabel">Paciente: </string>
     <string name="startLabelButton">Empezar prueba</string>
+	<string name="backLabelButton">Volver</string>
     <string name="pacientName">Introduce nombre</string>
     <string name="configError">Debes introducir un nombre para continuar</string>
     <string name="readyLabelButton">Listo para empezar</string>
@@ -40,4 +41,6 @@
     <string name="enabledCorrectsOverTotalLabel">Permitir ver aciertos sobre total</string>
     <string name="enabledFailsLabel">Permitir ver número de fallos</string>
     <string name="enabledFailsOverTotalLabel">Permitir ver fallos sobre total</string>
+	<string name="inspectorLabelButton">Consultar informes</string>
+	<string name="configuratorLabelButton">Configurar prueba</string>
 </resources>

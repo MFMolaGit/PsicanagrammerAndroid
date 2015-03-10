@@ -1,212 +1,240 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="example.geva.com.ui.Psicanagram"
-    android:background="@drawable/background2">
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin"
+	android:paddingBottom="@dimen/activity_vertical_margin"
+	tools:context="example.geva.com.ui.Psicanagram"
+	android:background="@drawable/background2">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/titleView"
-            android:background="@drawable/psicanagrammer"
-            android:contentDescription="@string/title"
-            android:adjustViewBounds="false" />
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/titleView"
+			android:background="@drawable/psicanagrammer"
+			android:contentDescription="@string/title"
+			android:adjustViewBounds="false"/>
 
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:id="@+id/scrollView2"
-            android:layout_weight="0.1">
+		<ScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="0dp"
+			android:id="@+id/scrollView2"
+			android:layout_weight="0.1">
 
-            <TableLayout
-                android:layout_width="fill_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="10sp"
-                android:layout_marginBottom="10sp">
+			<TableLayout
+				android:layout_width="fill_parent"
+				android:layout_height="0dp"
+				android:layout_marginTop="10sp"
+				android:layout_marginBottom="10sp">
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent">
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/groupLabel"
-                        android:id="@+id/groupLabelView"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/groupLabel"
+						android:id="@+id/groupLabelView"
+						android:textSize="25sp"
+						android:textStyle="bold"/>
 
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/spinnerView"
-                        android:layout_column="1"
-                        android:layout_weight="0.2"
-                        android:layout_gravity="center_vertical"
-                        android:layout_span="1"
-                        style="@android:style/Widget.TextView.SpinnerItem" />
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/spinnerView"
+						android:layout_column="1"
+						android:layout_weight="0.2"
+						android:layout_gravity="center_vertical"
+						android:layout_span="1"
+						style="@android:style/Widget.TextView.SpinnerItem"/>
 
-                </TableRow>
+				</TableRow>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pacientNameLabel"
-                        android:id="@+id/personLabelView"
-                        android:layout_column="0"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/pacientNameLabel"
+						android:id="@+id/personLabelView"
+						android:layout_column="0"
+						android:textSize="25sp"
+						android:textStyle="bold"/>
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:ems="10"
-                        android:id="@+id/personFieldName"
-                        android:layout_column="1"
-                        android:hint="@string/pacientName" />
+					<EditText
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:inputType="textPersonName"
+						android:ems="10"
+						android:id="@+id/personFieldName"
+						android:layout_column="1"
+						android:hint="@string/pacientName"/>
 
-                </TableRow>
+				</TableRow>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/enabledTotalTimeLabel"
-                        android:id="@+id/enableTotalTimeCheck"
-                        android:layout_column="0"
-                        android:checked="true"
-                        android:layout_span="2"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+					<CheckBox
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/enabledTotalTimeLabel"
+						android:id="@+id/enableTotalTimeCheck"
+						android:layout_column="0"
+						android:checked="true"
+						android:layout_span="2"
+						android:textSize="15sp"
+						android:textStyle="bold"/>
 
-                </TableRow>
+				</TableRow>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/enabledTimeleftLabel"
-                        android:id="@+id/enableTimeleftCheck"
-                        android:layout_column="0"
-                        android:checked="false"
-                        android:layout_span="2"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </TableRow>
+					<CheckBox
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/enabledTimeleftLabel"
+						android:id="@+id/enableTimeleftCheck"
+						android:layout_column="0"
+						android:checked="false"
+						android:layout_span="2"
+						android:textSize="15sp"
+						android:textStyle="bold"/>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+				</TableRow>
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/enabledCorrectsLabel"
-                        android:id="@+id/enableCorrectsCheck"
-                        android:layout_column="0"
-                        android:checked="false"
-                        android:layout_span="2"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </TableRow>
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+					<CheckBox
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/enabledCorrectsLabel"
+						android:id="@+id/enableCorrectsCheck"
+						android:layout_column="0"
+						android:checked="false"
+						android:layout_span="2"
+						android:textSize="15sp"
+						android:textStyle="bold"/>
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/enabledFailsLabel"
-                        android:id="@+id/enableFailsCheck"
-                        android:layout_column="0"
-                        android:checked="false"
-                        android:layout_span="2"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </TableRow>
+				</TableRow>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/enabledCorrectsOverTotalLabel"
-                        android:id="@+id/enableCorrectsOverTotalCheck"
-                        android:layout_column="0"
-                        android:checked="false"
-                        android:layout_span="2"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </TableRow>
+					<CheckBox
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/enabledFailsLabel"
+						android:id="@+id/enableFailsCheck"
+						android:layout_column="0"
+						android:checked="false"
+						android:layout_span="2"
+						android:textSize="15sp"
+						android:textStyle="bold"/>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+				</TableRow>
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/enabledFailsOverTotalLabel"
-                        android:id="@+id/enableFailsOverTotalCheck"
-                        android:layout_column="0"
-                        android:checked="false"
-                        android:layout_span="2"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </TableRow>
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
+					<CheckBox
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/enabledCorrectsOverTotalLabel"
+						android:id="@+id/enableCorrectsOverTotalCheck"
+						android:layout_column="0"
+						android:checked="false"
+						android:layout_span="2"
+						android:textSize="15sp"
+						android:textStyle="bold"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/timeLimitLabel"
-                        android:id="@+id/timeLimitLabelView"
-                        android:textSize="25sp"
-                        android:layout_span="2"
-                        android:textStyle="bold" />
+				</TableRow>
 
-                </TableRow>
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-                <NumberPicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/numberPicker" />
+					<CheckBox
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/enabledFailsOverTotalLabel"
+						android:id="@+id/enableFailsOverTotalCheck"
+						android:layout_column="0"
+						android:checked="false"
+						android:layout_span="2"
+						android:textSize="15sp"
+						android:textStyle="bold"/>
 
-            </TableLayout>
-        </ScrollView>
+				</TableRow>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/startLabelButton"
-            android:id="@+id/initButton"
-            android:layout_gravity="center"
-            android:onClick="initializeProgram" />
+				<TableRow
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
 
-    </LinearLayout>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/timeLimitLabel"
+						android:id="@+id/timeLimitLabelView"
+						android:textSize="25sp"
+						android:layout_span="2"
+						android:textStyle="bold"/>
+
+				</TableRow>
+
+				<NumberPicker
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/numberPicker"/>
+
+			</TableLayout>
+
+		</ScrollView>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center">
+
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/startLabelButton"
+				android:id="@+id/initButton"
+				android:layout_gravity="center"
+				android:onClick="initializeProgram"/>
+
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/backLabelButton"
+				android:id="@+id/backButton"
+				android:layout_gravity="center"
+				android:onClick="back"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
 </RelativeLayout>
+
