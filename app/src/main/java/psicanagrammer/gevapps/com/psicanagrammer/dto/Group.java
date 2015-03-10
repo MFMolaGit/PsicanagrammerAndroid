@@ -19,6 +19,9 @@ public class Group implements Cloneable {
     private int timeoutsCount;
     private int totalLoaded, total;
     private int generalCriterialTraining;
+    private float okPercent, koPercent, toPercent;
+    private float ok2Percent, to2Percent;
+    private float correctResponseLatency, responseLatency;
 
     public Group(final String name) {
         registerList = new ArrayList<Phase>();
@@ -129,6 +132,102 @@ public class Group implements Cloneable {
         this.timeoutsCount = timeoutsCount;
     }
 
+    public int getCorrectSeconds() {
+        return correctSeconds;
+    }
+
+    public void setCorrectSeconds(int correctSeconds) {
+        this.correctSeconds = correctSeconds;
+    }
+
+    public int getFailSeconds() {
+        return failSeconds;
+    }
+
+    public void setFailSeconds(int failSeconds) {
+        this.failSeconds = failSeconds;
+    }
+
+    public int getTotalLoaded() {
+        return totalLoaded;
+    }
+
+    public void setTotalLoaded(int totalLoaded) {
+        this.totalLoaded = totalLoaded;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getGeneralCriterialTraining() {
+        return generalCriterialTraining;
+    }
+
+    public void setGeneralCriterialTraining(int generalCriterialTraining) {
+        this.generalCriterialTraining = generalCriterialTraining;
+    }
+
+    public float getOkPercent() {
+        return okPercent;
+    }
+
+    public void setOkPercent(float okPercent) {
+        this.okPercent = okPercent;
+    }
+
+    public float getKoPercent() {
+        return koPercent;
+    }
+
+    public void setKoPercent(float koPercent) {
+        this.koPercent = koPercent;
+    }
+
+    public float getToPercent() {
+        return toPercent;
+    }
+
+    public void setToPercent(float toPercent) {
+        this.toPercent = toPercent;
+    }
+
+    public float getOk2Percent() {
+        return ok2Percent;
+    }
+
+    public void setOk2Percent(float ok2Percent) {
+        this.ok2Percent = ok2Percent;
+    }
+
+    public float getTo2Percent() {
+        return to2Percent;
+    }
+
+    public void setTo2Percent(float to2Percent) {
+        this.to2Percent = to2Percent;
+    }
+
+    public float getCorrectResponseLatency() {
+        return correctResponseLatency;
+    }
+
+    public void setCorrectResponseLatency(float correctResponseLatency) {
+        this.correctResponseLatency = correctResponseLatency;
+    }
+
+    public float getResponseLatency() {
+        return responseLatency;
+    }
+
+    public void setResponseLatency(float responseLatency) {
+        this.responseLatency = responseLatency;
+    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
         Group clonedGroup = (Group) super.clone();
@@ -163,31 +262,32 @@ public class Group implements Cloneable {
 
             float correctResponseLatency = ((float)correctSeconds)/correctsCount;
             float responseLatency = ((float)(correctSeconds + failSeconds))/(correctsCount + failsCount);
-
-            report.append("Grupo: ")
-                    .append(name).append(" (").append(String.valueOf(seconds)).append(")")
-                    .append("\n\n---- SOBRE TOTAL DE RESPUESTAS ----\n")
-                    .append("Aciertos: ").append(String.valueOf(correctsCount))
+               report.append("\n---- RESULTADO DE GRUPO ----")
+                    .append("\nNombre: ").append(name)
+                    .append("\nTiempo: ").append(seconds)
+                    .append("\n---- SOBRE TOTAL DE RESPUESTAS ----")
+                    .append("\nAciertos: ").append(String.valueOf(correctsCount))
                     .append("/").append(String.valueOf(total)).append("(").append(okPercent).append("%").append(")")
-                    .append(" - \tFallos: ").append(String.valueOf(failsCount))
+                    .append("\nFallos: ").append(String.valueOf(failsCount))
                     .append("/").append(String.valueOf(total)).append("(").append(koPercent).append("%").append(")")
-                    .append(" - \tFuera de tiempo: ").append(String.valueOf(timeoutsCount))
+                    .append("\nFuera de tiempo: ").append(String.valueOf(timeoutsCount))
                     .append("/").append(String.valueOf(total)).append("(").append(toPercent).append("%").append(")")
-                    .append("\n\n---- SOBRE TOTAL DE PALABRAS ----\n")
-                    .append("Aciertos: ").append(String.valueOf(correctsCount))
+                    .append("\n---- SOBRE TOTAL DE PALABRAS ----")
+                    .append("\nAciertos: ").append(String.valueOf(correctsCount))
                     .append("/").append(String.valueOf(totalLoaded)).append("(").append(ok2Percent).append("%").append(")")
-                    .append(" - \tFuera de tiempo: ").append(String.valueOf(timeoutsCount))
+                    .append("\nFuera de tiempo: ").append(String.valueOf(timeoutsCount))
                     .append("/").append(String.valueOf(totalLoaded)).append("(").append(to2Percent).append("%").append(")")
-                    .append("\n\n---- LATENCIAS ----\n")
-                    .append("Latencia de respuesta correcta: ").append(correctResponseLatency)
+                    .append("\n---- LATENCIAS ----")
+                    .append("\nLatencia de respuesta correcta: ").append(correctResponseLatency)
                     .append("\nLatencia de respuesta: ").append(responseLatency)
-                    .append("\n\n---- ENSAYO DE CRITERIO (" + Constants.CORRECT_TIMES_CRITERIAL)
-                    .append("x" + Constants.TIMERATE_CRITERIAL + ") ----\n")
-                    .append("Ratio: ").append(generalCriterialTraining).append(" veces")
-                    .append("\n\n---- REGISTROS A NIVEL GRUPO ----\n");
+                   .append("\n---- ENSAYO DE CRITERIO ----")
+                   .append("\nCriterio veces: ").append(Constants.CORRECT_TIMES_CRITERIAL)
+                   .append("\nCriterio tiempo: ").append(Constants.TIMERATE_CRITERIAL)
+                   .append("\nRatio: ").append(generalCriterialTraining)
+                    .append("\n---- RESULTADOS POR FASE ----\n");
 
             for (Phase register : registerList) {
-                report.append(register).append("\n");
+                report.append(register);
             }
         }
         return report.toString();

@@ -22,6 +22,9 @@ public class Phase implements Cloneable {
     private int totalLoaded;
     private int criterialTraining, criterialControl;
     private boolean goalCriterialTraining;
+    private float okPercent, koPercent, toPercent;
+    private float ok2Percent, to2Percent;
+    private float correctResponseLatency, responseLatency;
 
     private Map<String,String> solutions;
 
@@ -169,6 +172,82 @@ public class Phase implements Cloneable {
         this.failSeconds = failSeconds;
     }
 
+    public int getCriterialSeconds() {
+        return criterialSeconds;
+    }
+
+    public void setCriterialSeconds(int criterialSeconds) {
+        this.criterialSeconds = criterialSeconds;
+    }
+
+    public void setCriterialTraining(int criterialTraining) {
+        this.criterialTraining = criterialTraining;
+    }
+
+    public float getOkPercent() {
+        return okPercent;
+    }
+
+    public void setOkPercent(float okPercent) {
+        this.okPercent = okPercent;
+    }
+
+    public float getKoPercent() {
+        return koPercent;
+    }
+
+    public void setKoPercent(float koPercent) {
+        this.koPercent = koPercent;
+    }
+
+    public float getToPercent() {
+        return toPercent;
+    }
+
+    public void setToPercent(float toPercent) {
+        this.toPercent = toPercent;
+    }
+
+    public float getOk2Percent() {
+        return ok2Percent;
+    }
+
+    public void setOk2Percent(float ok2Percent) {
+        this.ok2Percent = ok2Percent;
+    }
+
+    public float getTo2Percent() {
+        return to2Percent;
+    }
+
+    public void setTo2Percent(float to2Percent) {
+        this.to2Percent = to2Percent;
+    }
+
+    public float getCorrectResponseLatency() {
+        return correctResponseLatency;
+    }
+
+    public void setCorrectResponseLatency(float correctResponseLatency) {
+        this.correctResponseLatency = correctResponseLatency;
+    }
+
+    public float getResponseLatency() {
+        return responseLatency;
+    }
+
+    public void setResponseLatency(float responseLatency) {
+        this.responseLatency = responseLatency;
+    }
+
+    public int getCriterialControl() {
+        return criterialControl;
+    }
+
+    public void setCriterialControl(int criterialControl) {
+        this.criterialControl = criterialControl;
+    }
+
     @Override
     public Object clone() throws CloneNotSupportedException {
         Phase clonedPhase = (Phase) super.clone();
@@ -195,27 +274,30 @@ public class Phase implements Cloneable {
         float correctResponseLatency = ((float)correctSeconds)/correctsCount;
         float responseLatency = ((float)(correctSeconds + failSeconds))/(correctsCount + failsCount);
 
-        StringBuilder report = new StringBuilder("Fase: ")
-                .append(name).append(" (").append(String.valueOf(seconds)).append(")")
-                .append("\n\n---- SOBRE TOTAL DE RESPUESTAS ----\n")
-                .append("Aciertos: ").append(String.valueOf(correctsCount))
+        StringBuilder report = new StringBuilder();
+                report.append("\n---- RESULTADO DE FASE ----")
+                .append("\nNombre: ").append(name)
+                .append("\nTiempo: ").append(seconds)
+                .append("\n---- SOBRE TOTAL DE RESPUESTAS ----")
+                .append("\nAciertos: ").append(String.valueOf(correctsCount))
                 .append("/").append(String.valueOf(total)).append("(").append(okPercent).append("%").append(")")
-                .append(" - \tFallos: ").append(String.valueOf(failsCount))
+                .append("\nFallos: ").append(String.valueOf(failsCount))
                 .append("/").append(String.valueOf(total)).append("(").append(koPercent).append("%").append(")")
-                .append(" - \tFuera de tiempo: ").append(String.valueOf(timeoutsCount))
+                .append("\nFuera de tiempo: ").append(String.valueOf(timeoutsCount))
                 .append("/").append(String.valueOf(total)).append("(").append(toPercent).append("%").append(")")
-                .append("\n\n---- SOBRE TOTAL DE PALABRAS ----\n")
-                .append("Aciertos: ").append(String.valueOf(correctsCount))
+                .append("\n---- SOBRE TOTAL DE PALABRAS ----")
+                .append("\nAciertos: ").append(String.valueOf(correctsCount))
                 .append("/").append(String.valueOf(totalLoaded)).append("(").append(ok2Percent).append("%").append(")")
-                .append(" - \tFuera de tiempo: ").append(String.valueOf(timeoutsCount))
+                .append("\nFuera de tiempo: ").append(String.valueOf(timeoutsCount))
                 .append("/").append(String.valueOf(totalLoaded)).append("(").append(to2Percent).append("%").append(")")
-                .append("\n\n---- LATENCIAS ----\n")
-                .append("Latencia de respuesta correcta: ").append(correctResponseLatency)
+                .append("\n---- LATENCIAS ----")
+                .append("\nLatencia de respuesta correcta: ").append(correctResponseLatency)
                 .append("\nLatencia de respuesta: ").append(responseLatency)
-                .append("\n\n---- ENSAYO DE CRITERIO ("+ Constants.CORRECT_TIMES_CRITERIAL)
-                .append("x"+ Constants.TIMERATE_CRITERIAL +") ----\n")
-                .append("Ratio: ").append(criterialTraining).append(" veces")
-                .append("\n\n---- REGISTROS A NIVEL FASE ----\n");
+                .append("\n---- ENSAYO DE CRITERIO ----")
+                .append("\nCriterio veces: ").append(Constants.CORRECT_TIMES_CRITERIAL)
+                .append("\nCriterio tiempo: ").append(Constants.TIMERATE_CRITERIAL)
+                .append("\nRatio: ").append(criterialTraining).append(" veces")
+                .append("\n---- RESULTADOS ----");
         for(Record register: registerList) {
             report.append(register).append("\n");
         }

@@ -16,7 +16,8 @@ public class MainMenuActivity extends Activity {
 	}
 	
 	public void inspect(final View view) {
-		
+        Intent intent = new Intent(this, ConsultorReviewsActivity.class);
+        startActivity(intent);
 	}
 	
 	public void configurateTest(final View view) {

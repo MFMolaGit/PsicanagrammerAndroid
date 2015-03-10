@@ -3,6 +3,8 @@ package psicanagrammer.gevapps.com.psicanagrammer.dto;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
+
 /**
  * Created by Geva on 20/02/2015.
  */
@@ -12,7 +14,6 @@ public class Record implements Cloneable {
     private String anagram, response, solution;
     private int seconds;
     private State state;
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     public Record(final String anagram, final String solution) {
         this.anagram = anagram;
@@ -21,7 +22,7 @@ public class Record implements Cloneable {
 
     @Override
     public String toString() {
-        return (timestamp!=null?sdf.format(timestamp):"")+","+anagram+","+solution+","+response+","+seconds+", " + state.value();
+        return (timestamp!=null? Constants.SIMPLE_DATE_FORMAT.format(timestamp):"")+","+anagram+","+solution+","+response+","+seconds+", " + state.value();
     }
 
     public State getState() {

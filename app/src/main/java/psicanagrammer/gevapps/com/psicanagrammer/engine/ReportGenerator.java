@@ -27,7 +27,7 @@ public class ReportGenerator implements Serializable {
     public ReportGenerator(final Group activeGroup, final String pacientName) {
         groupsLoaded = activeGroup;
         this.pacientName = pacientName;
-        fileReportName = Constants.FILE_PATH.replace("*", pacientName.trim().replace(" ", "_"));
+        fileReportName = Constants.FILE_PATH+Constants.FILE_EXT.replace("*", pacientName.trim().replace(" ", "_"));
         try {
             report = (Group) groupsLoaded.clone();
         } catch (CloneNotSupportedException e) {
@@ -81,7 +81,13 @@ public class ReportGenerator implements Serializable {
         if(fileCreated && fileReport != null) {
             FileOutputStream fOut = new FileOutputStream(fileReport);
             OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
-            myOutWriter.append(report.toString()).append(resultQuestions.toString());
+            myOutWriter.append("---- INFORME ----")
+                .append("Nombre: ")
+                .append(fileReportName)
+                .append("\nFecha: ")
+                .append(Constants.SIMPLE_DATE_FORMAT.format(new Date()))
+                .append(report.toString())
+                .append(resultQuestions.toString());
             myOutWriter.close();
             fOut.close();
         } else {

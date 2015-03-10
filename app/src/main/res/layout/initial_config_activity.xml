@@ -216,7 +216,15 @@
 			android:layout_height="wrap_content"
 			android:gravity="center">
 
-			<Button
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/backLabelButton"
+                android:id="@+id/backButton"
+                android:layout_gravity="center"
+                android:onClick="back"/>
+
+            <Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/startLabelButton"
@@ -224,15 +232,7 @@
 				android:layout_gravity="center"
 				android:onClick="initializeProgram"/>
 
-			<Button
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/backLabelButton"
-				android:id="@+id/backButton"
-				android:layout_gravity="center"
-				android:onClick="back"/>
-
-		</LinearLayout>
+        </LinearLayout>
 
 	</LinearLayout>
 

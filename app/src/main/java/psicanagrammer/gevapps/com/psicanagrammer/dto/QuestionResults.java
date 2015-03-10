@@ -28,7 +28,7 @@ public class QuestionResults implements Serializable {
         StringBuilder questionsResults = new StringBuilder();
 
         if(questions != null) {
-            questionsResults.append("\n\n---- PREGUNTAS FINALES ----\n");
+            questionsResults.append("\n---- PREGUNTAS FINALES ----");
 
             for(String question:questions.keySet()) {
                 questionsResults.append("\nPregunta: ").append(question);
