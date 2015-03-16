@@ -35,15 +35,16 @@
                 android:layout_height="wrap_content"
                 android:id="@android:id/empty"
                 android:text="@string/emptyQuestionsList"/>
-        </FrameLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/endQuestionsLabelButton"
-            android:id="@+id/endQuestionsButton"
-            android:gravity="center"
-            android:onClick="endQuestions" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/endQuestionsLabelButton"
+                android:id="@+id/endQuestionsButton"
+                android:gravity="center"
+                android:onClick="endQuestions"
+                android:layout_gravity="center|bottom" />
+        </FrameLayout>
 
     </LinearLayout>
 

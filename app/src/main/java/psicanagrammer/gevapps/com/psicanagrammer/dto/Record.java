@@ -1,5 +1,7 @@
 package psicanagrammer.gevapps.com.psicanagrammer.dto;
 
+import org.xmlpull.v1.XmlSerializer;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,6 +17,8 @@ public class Record implements Cloneable {
     private int seconds;
     private State state;
 
+    public Record() {}
+
     public Record(final String anagram, final String solution) {
         this.anagram = anagram;
         this.solution = solution;
@@ -27,6 +31,10 @@ public class Record implements Cloneable {
 
     public State getState() {
         return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     public void setCorrect(State isCorrect) {
@@ -78,5 +86,32 @@ public class Record implements Cloneable {
         Record clonedRecord = (Record) super.clone();
         clonedRecord.setSeconds(0);
         return clonedRecord;
+    }
+
+    public void toXML(XmlSerializer serializer) {
+        try {
+            serializer.startTag("","registro");
+                serializer.startTag("","fecha");
+                    serializer.text(timestamp!=null? Constants.SIMPLE_DATE_FORMAT.format(timestamp):"");
+                serializer.endTag("", "fecha");
+                serializer.startTag("","anagrama");
+                    serializer.text(anagram);
+                serializer.endTag("", "anagrama");
+                serializer.startTag("","solucion");
+                    serializer.text(solution);
+                serializer.endTag("","solucion");
+                serializer.startTag("","respuesta");
+                    serializer.text(response);
+                serializer.endTag("","respuesta");
+                serializer.startTag("","tiempo");
+                    serializer.text(String.valueOf(seconds));
+                serializer.endTag("","tiempo");
+                serializer.startTag("","estado");
+                    serializer.text(state.value());
+                serializer.endTag("","estado");
+            serializer.endTag("", "registro");
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

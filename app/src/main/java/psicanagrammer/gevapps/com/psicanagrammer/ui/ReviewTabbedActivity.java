@@ -30,6 +30,9 @@ import psicanagrammer.gevapps.com.psicanagrammer.R;
 import psicanagrammer.gevapps.com.psicanagrammer.dto.Group;
 import psicanagrammer.gevapps.com.psicanagrammer.dto.Phase;
 import psicanagrammer.gevapps.com.psicanagrammer.dto.Record;
+import psicanagrammer.gevapps.com.psicanagrammer.dto.Report;
+import psicanagrammer.gevapps.com.psicanagrammer.engine.*;
+import psicanagrammer.gevapps.com.psicanagrammer.engine.Readable;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.ActivityUtils;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
 
@@ -49,111 +52,19 @@ public class ReviewTabbedActivity extends ActionBarActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    private Readable saxReportLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_tabbed);
-        StringBuilder absoluteName = new StringBuilder(Constants.FILE_PATH);
-            absoluteName.append(getIntent().getExtras().getString("fileName"));
+        //StringBuilder absoluteName = new StringBuilder(Constants.FILE_PATH);
+        //    absoluteName.append(getIntent().getExtras().getString("fileName"));
 
-        File reviewFile = new File(absoluteName.toString());
+        saxReportLoader = new SAXReportLoader(getIntent().getExtras().getString("fileName"));
 
-            if(reviewFile.exists()) {
-                FileReader fr = null;
-                try {
-                    fr = new FileReader(reviewFile);
-
-                    BufferedReader br = new BufferedReader(fr);
-
-                    String reviewName;
-                    Date reviewTimestamp;
-                    Group group;
-                    Phase phase;
-                    Record record;
-
-                    boolean inHeader = false;
-                    boolean inGroup = false;
-                    boolean inPhase = false;
-                    boolean inRecord = false;
-                    boolean inFinalQuestions = false;
-                    boolean inResults = false;
-                    int tipoCampos = 0;
-
-                    String line;
-
-                    do {
-                        line = br.readLine();
-                        if(!line.isEmpty()) {
-
-                            if (line.matches("---- .* -----")) {
-                                if(line.contains("INFORME")) {
-                                    inHeader = true;
-                                } else if(line.contains("RESULTADO POR GRUPO")) {
-                                    inGroup = true;
-                                } else if(line.contains("SOBRE TOTAL DE RESPUESTAS")) {
-                                    tipoCampos = 1;
-                                } else if(line.contains("SOBRE TOTAL DE PALABRAS")) {
-                                    tipoCampos = 2;
-                                } else if(line.contains("LATENCIAS")) {
-                                    tipoCampos = 3;
-                                } else if(line.contains("ENSAYO DE CRITERIO")) {
-                                    tipoCampos = 4;
-                                } else if(line.contains("RESULTADOS POR FASE")) {
-                                    inGroup = false;
-                                } else if(line.contains("RESULTADO DE FASE")) {
-                                    inPhase = true;
-                                } else if(line.contains("RESULTADOS")) {
-                                    inPhase = false;
-                                    inResults = true;
-                                } else if(line.contains("PREGUNTAS FINALES")) {
-                                    inFinalQuestions = true;
-                                }
-                            } else if(inHeader) {
-                                if(line.contains("Nombre: ")) {
-                                    reviewName = line.substring(line.lastIndexOf("Nombre: "));
-                                } else if(line.contains("Fecha: ")) {
-                                    try {
-                                        reviewTimestamp = Constants.SIMPLE_DATE_FORMAT.parse(line.substring(line.lastIndexOf("Fecha: ")));
-                                    } catch(ParseException e) {
-                                        System.out.println("Fallo de parseo de fecha al leer fichero");
-                                    }
-                                }
-                            } else if(inGroup) {
-                                switch(tipoCampos) {
-                                    case 1:
-                                        break;
-                                    case 2:
-                                        break;
-                                    case 3:
-                                        break;
-                                    case 4:
-                                        break;
-                                }
-                            } else if(inPhase) {
-                                switch(tipoCampos) {
-                                    case 1:
-                                        break;
-                                    case 2:
-                                        break;
-                                    case 3:
-                                        break;
-                                    case 4:
-                                        break;
-                                }
-                            } else if(inFinalQuestions) {
-
-                            }
-                        }
-
-                    } while(line != null);
-
-                } catch (FileNotFoundException e) {
-                    ActivityUtils.showMessageInToast("No se pudo abrir el fichero", this, getResources().getColor(R.color.red));
-                } catch (IOException e) {
-                    ActivityUtils.showMessageInToast("Se produjo un fallo al leer el fichero", this, getResources().getColor(R.color.red));
-                }
-            }
+        Report currentReport = saxReportLoader.readReport();
+        System.out.println(currentReport);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.

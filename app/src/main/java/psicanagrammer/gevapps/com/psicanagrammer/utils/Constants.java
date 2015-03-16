@@ -26,7 +26,8 @@ public class Constants {
     public static final int TIMERATE_CRITERIAL = 15;
 
     public static final String FILE_PATH = "/sdcard/PsicanagrammerReports";
-    public static final String FILE_EXT = "/*.txt";
+    public static final String FILE_TEXT_EXT = "/*.txt";
+    public static final String FILE_XML_EXT = "/*.xml";
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
 }

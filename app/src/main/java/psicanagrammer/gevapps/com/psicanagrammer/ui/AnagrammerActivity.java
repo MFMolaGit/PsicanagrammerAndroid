@@ -220,7 +220,7 @@ public class AnagrammerActivity extends Activity {
 
         try {
             System.out.println("*************** Generando fichero de informe ******************");
-            reportGenerator.generateReportFile();
+            reportGenerator.generateReport();
             System.out.println("*************** Generando fichero de informe - OK ******************");
         } catch (Exception e) {
             System.out.println("*************** Generando fichero de informe - KO ******************");

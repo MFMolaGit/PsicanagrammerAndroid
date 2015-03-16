@@ -1,5 +1,7 @@
 package psicanagrammer.gevapps.com.psicanagrammer.dto;
 
+import org.xmlpull.v1.XmlSerializer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +21,7 @@ public class Phase implements Cloneable {
     private int correctsCount;
     private int failsCount;
     private int timeoutsCount;
-    private int totalLoaded;
+    private int total, totalLoaded;
     private int criterialTraining, criterialControl;
     private boolean goalCriterialTraining;
     private float okPercent, koPercent, toPercent;
@@ -27,6 +29,8 @@ public class Phase implements Cloneable {
     private float correctResponseLatency, responseLatency;
 
     private Map<String,String> solutions;
+
+    public Phase() {}
 
     public Phase(final String name) {
         registerList = new ArrayList<Record>();
@@ -88,6 +92,14 @@ public class Phase implements Cloneable {
         this.totalLoaded = totalLoaded;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
     public String getAnagram(final int anagram) {
        return registerList.get(anagram).getAnagram();
     }
@@ -112,7 +124,7 @@ public class Phase implements Cloneable {
         return registerList;
     }
 
-    private void setRegisterList(List<Record> registerList) {
+    public void setRegisterList(List<Record> registerList) {
         this.registerList = registerList;
     }
 
@@ -261,18 +273,23 @@ public class Phase implements Cloneable {
         return clonedPhase;
     }
 
+    private void calculateStatistics() {
+        total = registerList.size();
+        okPercent = ((float)(correctsCount*100))/total;
+        koPercent = ((float)(failsCount*100))/total;
+        toPercent = ((float)(timeoutsCount*100))/total;
+
+        ok2Percent = ((float)(correctsCount*100))/(total - failsCount);
+        to2Percent = ((float)(timeoutsCount*100))/(total - failsCount);
+
+        correctResponseLatency = ((float)correctSeconds)/correctsCount;
+        responseLatency = ((float)(correctSeconds + failSeconds))/(correctsCount + failsCount);
+    }
+
     @Override
     public String toString() {
-        int total = registerList.size();
-        float okPercent = ((float)(correctsCount*100))/total;
-        float koPercent = ((float)(failsCount*100))/total;
-        float toPercent = ((float)(timeoutsCount*100))/total;
 
-        float ok2Percent = ((float)(correctsCount*100))/(total - failsCount);
-        float to2Percent = ((float)(timeoutsCount*100))/(total - failsCount);
-
-        float correctResponseLatency = ((float)correctSeconds)/correctsCount;
-        float responseLatency = ((float)(correctSeconds + failSeconds))/(correctsCount + failsCount);
+        calculateStatistics();
 
         StringBuilder report = new StringBuilder();
                 report.append("\n---- RESULTADO DE FASE ----")
@@ -303,5 +320,97 @@ public class Phase implements Cloneable {
         }
 
         return report.toString();
+    }
+
+    public void toXML(XmlSerializer serializer) {
+
+        calculateStatistics();
+
+        try {
+            serializer.startTag("", "fase");
+                serializer.startTag("","nombre");
+                    serializer.text(name);
+                serializer.endTag("","nombre");
+                serializer.startTag("","tiempo");
+                    serializer.text(String.valueOf(seconds));
+                serializer.endTag("","tiempo");
+                serializer.startTag("","sobreRespuestas");
+                    serializer.startTag("","total");
+                        serializer.text(String.valueOf(total));
+                    serializer.endTag("","total");
+                    serializer.startTag("","aciertos");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(correctsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(okPercent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","aciertos");
+                    serializer.startTag("","fallos");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(failsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(koPercent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","fallos");
+                    serializer.startTag("","fueraTiempo");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(timeoutsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(toPercent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","fueraTiempo");
+                serializer.endTag("","sobreRespuestas");
+                    serializer.startTag("","sobrePalabras");
+                    serializer.startTag("","total");
+                        serializer.text(String.valueOf(totalLoaded));
+                    serializer.endTag("","total");
+                    serializer.startTag("","aciertos");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(correctsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(ok2Percent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","aciertos");
+                    serializer.startTag("","fueraTiempo");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(timeoutsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(to2Percent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","fueraTiempo");
+                serializer.endTag("","sobrePalabras");
+                serializer.startTag("","latencia");
+                    serializer.startTag("","correcta");
+                        serializer.text(String.valueOf(correctResponseLatency));
+                    serializer.endTag("","correcta");
+                    serializer.startTag("","general");
+                        serializer.text(String.valueOf(responseLatency));
+                    serializer.endTag("","general");
+                serializer.endTag("","latencia");
+                serializer.startTag("","ensayoCriterio");
+                    serializer.startTag("","veces");
+                        serializer.text(String.valueOf(Constants.CORRECT_TIMES_CRITERIAL));
+                    serializer.endTag("","veces");
+                    serializer.startTag("","tiempo");
+                        serializer.text(String.valueOf(Constants.TIMERATE_CRITERIAL));
+                    serializer.endTag("","tiempo");
+                    serializer.startTag("","ratio");
+                        serializer.text(String.valueOf(criterialTraining));
+                    serializer.endTag("","ratio");
+                serializer.endTag("","ensayoCriterio");
+                serializer.startTag("","registros");
+                for(Record register: registerList) {
+                    register.toXML(serializer);
+                }
+                serializer.endTag("","registros");
+            serializer.endTag("","fase");
+        } catch(Exception e) {
+                System.out.println(e.getMessage());
+        }
     }
 }

@@ -1,5 +1,10 @@
 package psicanagrammer.gevapps.com.psicanagrammer.dto;
 
+import android.util.Xml;
+
+import org.xmlpull.v1.XmlSerializer;
+
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +27,8 @@ public class Group implements Cloneable {
     private float okPercent, koPercent, toPercent;
     private float ok2Percent, to2Percent;
     private float correctResponseLatency, responseLatency;
+
+    public Group() {}
 
     public Group(final String name) {
         registerList = new ArrayList<Phase>();
@@ -88,7 +95,7 @@ public class Group implements Cloneable {
         return registerList;
     }
 
-    private void setRegisterList(final List<Phase> registerList) {
+    public void setRegisterList(final List<Phase> registerList) {
         this.registerList = registerList;
     }
 
@@ -248,20 +255,25 @@ public class Group implements Cloneable {
         return clonedGroup;
     }
 
+    private void calculateStatistics() {
+        okPercent = ((float)(correctsCount*100))/total;
+        koPercent = ((float)(failsCount*100))/total;
+        toPercent = ((float)(timeoutsCount*100))/total;
+
+        ok2Percent = ((float)(correctsCount*100))/(total - failsCount);
+        to2Percent = ((float)(timeoutsCount*100))/(total - failsCount);
+
+        correctResponseLatency = ((float)correctSeconds)/correctsCount;
+        responseLatency = ((float)(correctSeconds + failSeconds))/(correctsCount + failsCount);
+    }
+
     @Override
     public String toString() {
         StringBuilder report = new StringBuilder();
 
         if(seconds != 0) {
-            float okPercent = ((float)(correctsCount*100))/total;
-            float koPercent = ((float)(failsCount*100))/total;
-            float toPercent = ((float)(timeoutsCount*100))/total;
+            calculateStatistics();
 
-            float ok2Percent = ((float)(correctsCount*100))/(total - failsCount);
-            float to2Percent = ((float)(timeoutsCount*100))/(total - failsCount);
-
-            float correctResponseLatency = ((float)correctSeconds)/correctsCount;
-            float responseLatency = ((float)(correctSeconds + failSeconds))/(correctsCount + failsCount);
                report.append("\n---- RESULTADO DE GRUPO ----")
                     .append("\nNombre: ").append(name)
                     .append("\nTiempo: ").append(seconds)
@@ -292,4 +304,97 @@ public class Group implements Cloneable {
         }
         return report.toString();
     }
+
+    public void toXML(final XmlSerializer serializer) {
+
+        calculateStatistics();
+
+        try {
+            serializer.startTag("", "grupo");
+                serializer.startTag("","nombre");
+                    serializer.text(name);
+                serializer.endTag("","nombre");
+                serializer.startTag("","tiempo");
+                    serializer.text(String.valueOf(seconds));
+                serializer.endTag("","tiempo");
+                serializer.startTag("","sobreRespuestas");
+                    serializer.startTag("","total");
+                        serializer.text(String.valueOf(total));
+                    serializer.endTag("","total");
+                    serializer.startTag("","aciertos");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(correctsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(okPercent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","aciertos");
+                    serializer.startTag("","fallos");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(failsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(koPercent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","fallos");
+                    serializer.startTag("","fueraTiempo");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(timeoutsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(toPercent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","fueraTiempo");
+                serializer.endTag("","sobreRespuestas");
+                serializer.startTag("","sobrePalabras");
+                    serializer.startTag("","total");
+                        serializer.text(String.valueOf(totalLoaded));
+                    serializer.endTag("","total");
+                    serializer.startTag("","aciertos");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(correctsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(ok2Percent));
+                        serializer.endTag("","porcentaje");
+                     serializer.endTag("","aciertos");
+                    serializer.startTag("","fueraTiempo");
+                        serializer.startTag("","valor");
+                            serializer.text(String.valueOf(timeoutsCount));
+                        serializer.endTag("","valor");
+                        serializer.startTag("","porcentaje");
+                            serializer.text(String.valueOf(to2Percent));
+                        serializer.endTag("","porcentaje");
+                    serializer.endTag("","fueraTiempo");
+                serializer.endTag("","sobrePalabras");
+                serializer.startTag("","latencia");
+                    serializer.startTag("","correcta");
+                        serializer.text(String.valueOf(correctResponseLatency));
+                    serializer.endTag("","correcta");
+                    serializer.startTag("","general");
+                        serializer.text(String.valueOf(responseLatency));
+                    serializer.endTag("","general");
+                serializer.endTag("","latencia");
+                serializer.startTag("","ensayoCriterio");
+                    serializer.startTag("","veces");
+                        serializer.text(String.valueOf(Constants.CORRECT_TIMES_CRITERIAL));
+                    serializer.endTag("","veces");
+                    serializer.startTag("","tiempo");
+                        serializer.text(String.valueOf(Constants.TIMERATE_CRITERIAL));
+                    serializer.endTag("","tiempo");
+                    serializer.startTag("","ratio");
+                        serializer.text(String.valueOf(generalCriterialTraining));
+                    serializer.endTag("","ratio");
+                serializer.endTag("","ensayoCriterio");
+                serializer.startTag("","fases");
+                    for (Phase register : registerList) {
+                        register.toXML(serializer);
+                    }
+                serializer.endTag("","fases");
+            serializer.endTag("","grupo");
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

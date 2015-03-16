@@ -1,5 +1,7 @@
 package psicanagrammer.gevapps.com.psicanagrammer.dto;
 
+import org.xmlpull.v1.XmlSerializer;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,4 +41,22 @@ public class QuestionResults implements Serializable {
         return questionsResults.toString();
     }
 
+    public void toXML(final XmlSerializer serializer) {
+        try {
+            serializer.startTag("","preguntas");
+                for(String question:questions.keySet()) {
+                    serializer.startTag("","pregunta");
+                        serializer.startTag("","enunciado");
+                            serializer.text(question);
+                        serializer.endTag("","enunciado");
+                        serializer.startTag("","respuesta");
+                            serializer.text(String.valueOf(questions.get(question)));
+                        serializer.endTag("","respuesta");
+                    serializer.endTag("","pregunta");
+                }
+            serializer.endTag("","preguntas");
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
