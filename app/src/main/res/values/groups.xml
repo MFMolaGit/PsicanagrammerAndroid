@@ -7,6 +7,7 @@
         <item>@string/group2</item>
         <item>@string/group3</item>
         <item>@string/group4</item>
+        <item>@string/group5</item>
     </string-array>
 
     <string name="group1">Inmunizado</string>
@@ -31,6 +32,11 @@
     <string name="group4">Control</string>
     <string-array name="group4_phases">
         <item>@string/phase4</item>
+    </string-array>
+
+    <string name="group5">Aprendizaje</string>
+    <string-array name="group5_phases">
+        <item>@string/phase5</item>
     </string-array>
 
 </resources>

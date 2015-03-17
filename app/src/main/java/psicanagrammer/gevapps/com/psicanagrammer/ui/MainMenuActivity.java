@@ -12,6 +12,10 @@ public class MainMenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getIntent().getBooleanExtra("EXIT",false)) {
+            finish();
+        }
+
         setContentView(R.layout.initial_menu_activity);
 	}
 	

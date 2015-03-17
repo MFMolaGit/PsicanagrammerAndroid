@@ -34,7 +34,10 @@ public class Psicanagram extends Activity {
         super.onCreate(savedInstanceState);
 
         if (getIntent().getBooleanExtra("EXIT",false)) {
-            finish();
+            Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", true);
+            startActivity(intent);
         }
 
         setContentView(R.layout.initial_config_activity);

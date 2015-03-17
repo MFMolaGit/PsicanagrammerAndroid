@@ -103,4 +103,12 @@
         <item>@string/phase4_anagram20</item>
     </string-array>
 
+    <string name="Aprendizaje">5</string>
+    <string name="phase5">Aprendizaje</string>
+    <string-array name="phase5_anagrams">
+        <item>@string/phase5_anagram1</item>
+        <item>@string/phase5_anagram2</item>
+        <item>@string/phase5_anagram3</item>
+    </string-array>
+
 </resources>

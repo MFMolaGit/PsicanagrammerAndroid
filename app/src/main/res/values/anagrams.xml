@@ -47,31 +47,31 @@
     <string name="phase2_anagram20">VNAÓR</string>
 
     <!-- Fase Pretratamiento sin solución -->
-    <string name="phase3_anagram1">FARCO</string>
-    <string name="phase3_anagram2">FATUL</string>
-    <string name="phase3_anagram3">ARASO</string>
-    <string name="phase3_anagram4">BAPAS</string>
-    <string name="phase3_anagram5">BUINA</string>
-    <string name="phase3_anagram6">BURUL</string>
-    <string name="phase3_anagram7">ARCIN</string>
-    <string name="phase3_anagram8">FLICA</string>
-    <string name="phase3_anagram9">CORZE</string>
-    <string name="phase3_anagram10">AFERO</string>
-    <string name="phase3_anagram11">COPEL</string>
-    <string name="phase3_anagram12">CORZE</string>
-    <string name="phase3_anagram13">PAZPE</string>
-    <string name="phase3_anagram14">ARÑEN</string>
-    <string name="phase3_anagram15">AMIÑU</string>
-    <string name="phase3_anagram16">LITEF</string>
-    <string name="phase3_anagram17">AÑERI</string>
-    <string name="phase3_anagram18">PERTI</string>
-    <string name="phase3_anagram19">VIUEN</string>
-    <string name="phase3_anagram20">MIEDI</string>
+    <string name="phase3_anagram1">FRCAO</string>
+    <string name="phase3_anagram2">FTLAU</string>
+    <string name="phase3_anagram3">RSAOA</string>
+    <string name="phase3_anagram4">BPSAO</string>
+    <string name="phase3_anagram5">BNUIA</string>
+    <string name="phase3_anagram6">BRSOU</string>
+    <string name="phase3_anagram7">RCNAI</string>
+    <string name="phase3_anagram8">FLCAI</string>
+    <string name="phase3_anagram9">CRPOE</string>
+    <string name="phase3_anagram10">FRAEO</string>
+    <string name="phase3_anagram11">CPLOE</string>
+    <string name="phase3_anagram12">FLSAU</string>
+    <string name="phase3_anagram13">PRFAE</string>
+    <string name="phase3_anagram14">RÑNAE</string>
+    <string name="phase3_anagram15">MÑAIU</string>
+    <string name="phase3_anagram16">LTFIE</string>
+    <string name="phase3_anagram17">FRIEA</string>
+    <string name="phase3_anagram18">PRTEI</string>
+    <string name="phase3_anagram19">VNIUE</string>
+    <string name="phase3_anagram20">MNOIU</string>
 
     <!-- Fase Prueba 3-4-2-5-1 -->
     <string name="phase4_anagram1">OBDOA</string>
     <string name="phase4_anagram2">ZAOLB</string>
-    <string name="phase4_anagram3">BREAC</string>
+    <string name="phase4_anagram3">PIÁZL</string>
     <string name="phase4_anagram4">IZROE</string>
     <string name="phase4_anagram5">ENROF</string>
     <string name="phase4_anagram6">ONCOI</string>
@@ -89,5 +89,10 @@
     <string name="phase4_anagram18">LPUOP</string>
     <string name="phase4_anagram19">CAAOC</string>
     <string name="phase4_anagram20">TAOLT</string>
+
+    <!-- Fase Aprendizaje con solución 3-2-1-5-4 -->
+    <string name="phase5_anagram1">SOMAC</string>
+    <string name="phase5_anagram2">LÁCZI</string>
+    <string name="phase5_anagram3">ÑACNÓ</string>
 
 </resources>

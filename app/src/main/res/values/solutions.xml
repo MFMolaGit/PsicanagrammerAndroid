@@ -72,7 +72,7 @@
     <!-- Fase Prueba -->
     <string name="solution_phase4_anagram1">ADOBO</string>
     <string name="solution_phase4_anagram2">BOZAL</string>
-    <string name="solution_phase4_anagram3">CEBRA</string>
+    <string name="solution_phase4_anagram3">LÁPIZ</string>
     <string name="solution_phase4_anagram4">ERIZO</string>
     <string name="solution_phase4_anagram5">FRENO</string>
     <string name="solution_phase4_anagram6">ICONO</string>
@@ -91,5 +91,9 @@
     <string name="solution_phase4_anagram19">CACAO</string>
     <string name="solution_phase4_anagram20">TOTAL</string>
 
+    <!-- Grupo aprendizaje -->
+    <string name="solution_phase5_anagram1">MOSCA</string>
+    <string name="solution_phase5_anagram2">CÁLIZ</string>
+    <string name="solution_phase5_anagram3">CAÑÓN</string>
 
 </resources>
