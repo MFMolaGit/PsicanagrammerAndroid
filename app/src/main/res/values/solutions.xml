@@ -6,7 +6,7 @@
     <!-- Solución fase inmunización -->
     <string name="solution_phase1_anagram1">GALLO</string>
     <string name="solution_phase1_anagram2">ÁLBUM</string>
-    <string name="solution_phase1_anagram3">ROMBO</string>
+    <string name="solution_phase1_anagram3">OZONO</string>
     <string name="solution_phase1_anagram4">ÁRABE</string>
     <string name="solution_phase1_anagram5">ARAÑA</string>
     <string name="solution_phase1_anagram6">ARENA</string>
@@ -20,7 +20,7 @@
     <string name="solution_phase1_anagram14">LIMBO</string>
     <string name="solution_phase1_anagram15">NIETO</string>
     <string name="solution_phase1_anagram16">OLIVO</string>
-    <string name="solution_phase1_anagram17">PUNTO</string>
+    <string name="solution_phase1_anagram17">FELIZ</string>
     <string name="solution_phase1_anagram18">SALUD</string>
     <string name="solution_phase1_anagram19">CEBRA</string>
     <string name="solution_phase1_anagram20">VARÓN</string>
@@ -28,7 +28,7 @@
     <!-- Fase Pretratamiento con solución -->
     <string name="solution_phase2_anagram1">GALLO</string>
     <string name="solution_phase2_anagram2">ÁLBUM</string>
-    <string name="solution_phase2_anagram3">ROMBO</string>
+    <string name="solution_phase2_anagram3">OZONO</string>
     <string name="solution_phase2_anagram4">ÁRABE</string>
     <string name="solution_phase2_anagram5">ARAÑA</string>
     <string name="solution_phase2_anagram6">ARENA</string>
@@ -42,7 +42,7 @@
     <string name="solution_phase2_anagram14">LIMBO</string>
     <string name="solution_phase2_anagram15">NIETO</string>
     <string name="solution_phase2_anagram16">OLIVO</string>
-    <string name="solution_phase2_anagram17">PUNTO</string>
+    <string name="solution_phase2_anagram17">FELIZ</string>
     <string name="solution_phase2_anagram18">SALUD</string>
     <string name="solution_phase2_anagram19">CEBRA</string>
     <string name="solution_phase2_anagram20">VARÓN</string>

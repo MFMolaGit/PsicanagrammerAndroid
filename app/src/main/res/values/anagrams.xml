@@ -5,7 +5,7 @@
     <!-- Fase inmunzación 1-5-2-4-3 -->
     <string name="phase1_anagram1">GOALL</string>
     <string name="phase1_anagram2">ÁMLUB</string>
-    <string name="phase1_anagram3">ROOBM</string>
+    <string name="phase1_anagram3">OOZNO</string>
     <string name="phase1_anagram4">ÁERBA</string>
     <string name="phase1_anagram5">AARÑA</string>
     <string name="phase1_anagram6">AARNE</string>
@@ -19,7 +19,7 @@
     <string name="phase1_anagram14">LOIBM</string>
     <string name="phase1_anagram15">NOITE</string>
     <string name="phase1_anagram16">OOLVI</string>
-    <string name="phase1_anagram17">POUTN</string>
+    <string name="phase1_anagram17">FZEIL</string>
     <string name="phase1_anagram18">SDAUL</string>
     <string name="phase1_anagram19">CAERB</string>
     <string name="phase1_anagram20">VNAÓR</string>
@@ -27,7 +27,7 @@
     <!-- Fase Pretratamiento con solución 1-5-2-4-3 -->
     <string name="phase2_anagram1">GOALL</string>
     <string name="phase2_anagram2">ÁMLUB</string>
-    <string name="phase2_anagram3">ROOBM</string>
+    <string name="phase2_anagram3">OOZNO</string>
     <string name="phase2_anagram4">ÁERBA</string>
     <string name="phase2_anagram5">AARÑA</string>
     <string name="phase2_anagram6">AARNE</string>
@@ -41,7 +41,7 @@
     <string name="phase2_anagram14">LOIBM</string>
     <string name="phase2_anagram15">NOITE</string>
     <string name="phase2_anagram16">OOLVI</string>
-    <string name="phase2_anagram17">POUTN</string>
+    <string name="phase2_anagram17">FZEIL</string>
     <string name="phase2_anagram18">SDAUL</string>
     <string name="phase2_anagram19">CAERB</string>
     <string name="phase2_anagram20">VNAÓR</string>
@@ -63,7 +63,7 @@
     <string name="phase3_anagram14">RÑNAE</string>
     <string name="phase3_anagram15">MÑAIU</string>
     <string name="phase3_anagram16">LTFIE</string>
-    <string name="phase3_anagram17">FRIEA</string>
+    <string name="phase3_anagram17">OILFR</string>
     <string name="phase3_anagram18">PRTEI</string>
     <string name="phase3_anagram19">VNIUE</string>
     <string name="phase3_anagram20">MNOIU</string>
