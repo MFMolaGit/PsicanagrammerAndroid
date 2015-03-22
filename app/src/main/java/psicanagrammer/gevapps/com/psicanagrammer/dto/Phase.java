@@ -2,6 +2,7 @@ package psicanagrammer.gevapps.com.psicanagrammer.dto;
 
 import org.xmlpull.v1.XmlSerializer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,7 @@ import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
 /**
  * Created by Geva on 21/02/2015.
  */
-public class Phase implements Cloneable {
+public class Phase implements Cloneable, Serializable {
 
     private String name;
     private List<Record> registerList;

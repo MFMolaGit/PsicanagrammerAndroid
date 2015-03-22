@@ -43,7 +43,7 @@ public class ConsultorReviewsActivity extends Activity {
         File reviewsFolder = new File(Constants.FILE_PATH);
 
             if(reviewsFolder.exists() &&  reviewsFolder.isDirectory()) {
-                reviewsNames.addAll(Arrays.asList(reviewsFolder.list()));
+                reviewsNames.addAll(filterFileInputs(reviewsFolder.list()));
             }
 
         adapterReviews = new ArrayAdapter<String> ( this, android.R.layout.simple_list_item_1, reviewsNames);
@@ -55,7 +55,7 @@ public class ConsultorReviewsActivity extends Activity {
                 String fileSelected = reviewsNames.get(position);
 
                 ActivityUtils.showMessageInToast("Has elegido " + fileSelected, getApplicationContext(), getResources().getColor(R.color.white));
-                Intent intent = new Intent(getApplicationContext(), ReviewTabbedActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
                     intent.putExtra("fileName", fileSelected);
                     startActivity(intent);
             }
@@ -63,9 +63,23 @@ public class ConsultorReviewsActivity extends Activity {
 
     }
 
+
+
     public void back(final View view) {
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
+        finish();
+    }
+
+    private List<String> filterFileInputs(final String[] list) {
+        List<String> finalFiles = new ArrayList<>();
+
+        for(String file:list) {
+            if(file.endsWith(Constants.XML_EXTENSION)) {
+                int posDot = file.lastIndexOf(Constants.XML_EXTENSION);
+                finalFiles.add(file.substring(0, posDot));
+            }
+        }
+
+        return finalFiles;
     }
 
 }

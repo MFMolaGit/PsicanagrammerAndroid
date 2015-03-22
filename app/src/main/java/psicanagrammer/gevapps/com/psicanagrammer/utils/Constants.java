@@ -1,6 +1,8 @@
 package psicanagrammer.gevapps.com.psicanagrammer.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Geva on 21/02/2015.
@@ -28,6 +30,11 @@ public class Constants {
     public static final String FILE_PATH = "/sdcard/PsicanagrammerReports";
     public static final String FILE_TEXT_EXT = "/*.txt";
     public static final String FILE_XML_EXT = "/*.xml";
+    public static final String XML_EXTENSION = ".xml";
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    public static final SimpleDateFormat SIMPLE_HOUR_FORMAT = new SimpleDateFormat("HH:mm:ss");
+    public static final Map<String, String> phaseNameMap = new HashMap<String,String>(){{
+        put("PretratamientoCon","Pretratamiento con solución");
+        put("PretratamientoSin","Pretratamiento sin solución");}};
 
 }

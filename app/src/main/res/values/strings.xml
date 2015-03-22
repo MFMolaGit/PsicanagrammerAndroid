@@ -33,7 +33,6 @@
     <string name="endMessage">Ha finalizado la prueba con éxito. Muchas gracias por su colaboración.</string>
     <string name="closeApp">Salir</string>
     <string name="title_activity_anagrammer">AnagrammerActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_instructions">InstructionsActivity</string>
     <string name="enabledTotalTimeLabel">Permitir ver transcurso del tiempo</string>
     <string name="enabledTimeleftLabel">Permitir ver tiempo restante</string>
@@ -45,8 +44,23 @@
     <string name="configuratorLabelButton">Configurar prueba</string>
     <string name="title_activity_consultor_reviews">ConsultorReviewsActivity</string>
     <string name="title_activity_review_tabbed">ReviewTabbedActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_activity_review">ReviewActivity</string>
+    <string name="mailLabelButton">Enviar informe por mail</string>
 
+    <!-- Registers table headers -->
+    <string name="hourTableLabel">Hora</string>
+    <string name="anagramTableLabel">Anagrama</string>
+    <string name="solutionTableLabel">Solución</string>
+    <string name="responseTableLabel">Respuesta</string>
+    <string name="timeTableLabel">Tiempo</string>
+    <string name="stateTableLabel">Estado</string>
+
+    <string-array name="HeadersRegisterTable">
+        <item>@string/hourTableLabel</item>
+        <item>@string/anagramTableLabel</item>
+        <item>@string/solutionTableLabel</item>
+        <item>@string/responseTableLabel</item>
+        <item>@string/timeTableLabel</item>
+        <item>@string/stateTableLabel</item>
+    </string-array>
 </resources>

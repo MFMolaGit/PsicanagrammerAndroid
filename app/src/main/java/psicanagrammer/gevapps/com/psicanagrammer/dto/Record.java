@@ -2,6 +2,7 @@ package psicanagrammer.gevapps.com.psicanagrammer.dto;
 
 import org.xmlpull.v1.XmlSerializer;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
 /**
  * Created by Geva on 20/02/2015.
  */
-public class Record implements Cloneable {
+public class Record implements Cloneable, Serializable {
 
     private Date timestamp;
     private String anagram, response, solution;

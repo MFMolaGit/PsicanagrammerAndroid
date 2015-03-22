@@ -9,4 +9,20 @@
     <item name="black" type="color">#111111</item>
     <item name="white" type="color">#FFFFFF</item>
 
+    <item name="review_subtitle" type="color">#47927a55</item>
+    <item name="review_clicking_subtitle" type="color">#c892463b</item>
+    <item name="review_disabled_subtitle" type="color">#c8c1634f</item>
+    <item name="review_clicked_subtitle" type="color">#64925337</item>
+    <item name="review_contain" type="color">#1e334392</item>
+    <item name="header_table" type="color">#2d000abb</item>
+    <item name="odd_row" type="color">#1e926056</item>
+    <item name="even_row" type="color">#1e429281</item>
+
+    <item name="red_odd_row_incorrect" type="color">#3cc3261b</item>
+    <item name="red_even_row_incorrect" type="color">#3c691a14</item>
+    <item name="yellow_odd_row_timeout" type="color">#3ce2ea27</item>
+    <item name="yellow_even_row_timeout" type="color">#3c626911</item>
+    <item name="green_odd_row_correct" type="color">#3c43c32f</item>
+    <item name="green_even_row_correct" type="color">#3c286919</item>
+
 </resources>

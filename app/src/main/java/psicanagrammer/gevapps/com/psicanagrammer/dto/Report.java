@@ -1,5 +1,6 @@
 package psicanagrammer.gevapps.com.psicanagrammer.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import psicanagrammer.gevapps.com.psicanagrammer.engine.Reportable;
@@ -7,7 +8,7 @@ import psicanagrammer.gevapps.com.psicanagrammer.engine.Reportable;
 /**
  * Created by Geva on 14/03/2015.
  */
-public class Report {
+public class Report implements Serializable {
     protected String fileReportName;
     protected Date timestamp;
     protected Group group;

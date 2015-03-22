@@ -5,6 +5,7 @@ import android.util.Xml;
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
 /**
  * Created by Geva on 21/02/2015.
  */
-public class Group implements Cloneable {
+public class Group implements Cloneable, Serializable {
 
     private String name;
     private List<Phase> registerList;

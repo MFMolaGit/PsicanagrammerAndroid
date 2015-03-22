@@ -39,8 +39,8 @@
             android:label="@string/title_activity_consultor_reviews" >
         </activity>
         <activity
-            android:name=".ui.ReviewTabbedActivity"
-            android:label="@string/title_activity_review_tabbed" >
+            android:name=".ui.ReviewActivity"
+            android:label="@string/title_activity_review" >
         </activity>
     </application>
 
