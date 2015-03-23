@@ -59,6 +59,7 @@ public class Phase implements Cloneable, Serializable {
                             && criterialSeconds <= Constants.TIMERATE_CRITERIAL) {
                         goalCriterialTraining = true;
                         criterialTraining++;
+						criterialControl = criterialSeconds = 0;
                     }
 
                     break;
