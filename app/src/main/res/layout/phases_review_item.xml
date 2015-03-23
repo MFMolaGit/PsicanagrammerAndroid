@@ -9,18 +9,25 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Fase"
-                android:id="@+id/reviewPhaseSubtitle"
-                android:gravity="center|left"
-                android:background="@color/review_subtitle" />
-
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="15dp"
+                android:background="@drawable/headercell_reviewtable" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Fase"
+                    android:id="@+id/reviewPhaseSubtitle"
+                    android:gravity="center|left"
+                    android:layout_span="2" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -40,7 +47,8 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_bottom_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -57,19 +65,24 @@
                     android:id="@+id/phaseTime"
                     android:layout_weight="0.5" />
             </TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Sobre respuestas"
-                android:id="@+id/reviewOverResponsesSubtitle"
-                android:gravity="center|left"
-                android:background="@color/review_subtitle" />
-
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="15dp"
+                android:background="@drawable/headercell_reviewtable" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Sobre respuestas"
+                    android:id="@+id/reviewOverResponsesSubtitle"
+                    android:gravity="center|left"
+                    android:layout_span="2" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -89,7 +102,8 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,7 +123,8 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,18 +142,24 @@
                     android:layout_weight="0.5" />
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Sobre palabras"
-                android:id="@+id/reviewOverWordsSubtitle"
-                android:gravity="center|left"
-                android:background="@color/review_subtitle" />
-
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="15dp"
+                android:background="@drawable/headercell_reviewtable" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Sobre palabras"
+                    android:id="@+id/reviewOverWordsSubtitle"
+                    android:gravity="center|left"
+                    android:layout_span="2" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -158,7 +179,8 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_bottom_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -176,18 +198,24 @@
                     android:layout_weight="0.5" />
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Latencias"
-                android:id="@+id/reviewLatencySubtitle"
-                android:gravity="center|left"
-                android:background="@color/review_subtitle" />
-
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="15dp"
+                android:background="@drawable/headercell_reviewtable" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Latencias"
+                    android:id="@+id/reviewLatencySubtitle"
+                    android:gravity="center|left"
+                    android:layout_span="2" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -207,7 +235,8 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_bottom_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -224,19 +253,25 @@
                     android:id="@+id/latencyGeneral"
                     android:layout_weight="0.5" />
             </TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Ensayo de criterio"
-                android:id="@+id/reviewCriterialSubtitle"
-                android:gravity="center|left"
-                android:background="@color/review_subtitle" />
-
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="15dp"
+                android:background="@drawable/headercell_reviewtable" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Ensayo de criterio"
+                    android:id="@+id/reviewCriterialSubtitle"
+                    android:gravity="center|left"
+                    android:layout_span="2" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -256,7 +291,8 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -276,7 +312,8 @@
 
             <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent"
+                android:background="@drawable/bodycell_bottom_reviewtable">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -294,22 +331,29 @@
                     android:layout_weight="0.5" />
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Registros"
+            <TableRow
                 android:id="@+id/reviewRegistersSubtitle"
-                android:gravity="center|left"
-                android:clickable="true"
-                android:background="@drawable/expander"/>
+                android:layout_width="fill_parent"
+                android:layout_height="15dp"
+                android:background="@drawable/expander_row"
+                android:clickable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Registros"
+                    android:gravity="center|left" />
+
+            </TableRow>
 
             <TableRow
                 android:id="@+id/registersTableRowContainer"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:visibility="gone"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:background="@drawable/bodycell_bottom_reviewtable">
 
                 <TableLayout
                     android:id="@+id/registersTable"

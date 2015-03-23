@@ -8,7 +8,11 @@
     <string name="info_text">Bienvenido a psicanagram</string>
     <string name="buttonChronoStop_text">Stop</string>
     <string name="buttonChronoStart_text">Start</string>
-    <string name="action_settings">Configuración</string>
+    <string name="about">Acerca de...</string>
+    <string name="authorText">App creada y destinada al caso de estudio en psicología de indefensión aprendida.</string>
+    <string name="copyright">Copyright (c) 2015 - Manuel Francisco Mola Mateos</string>
+    <string name="enterprise">Created by Geva\'s Home Apps</string>
+    <string name="aboutText"><Data><![CDATA[App destinada al caso de estudio en psicología de indefensión aprendida.<br/><br/>Copyright (c) 2015 - Manuel Francisco Mola Mateos<br/><br/><font color=\'green\'>Creado por Geva\'s Home Apps</font>]]></Data></string>
     <string name="app_name">Psicanagram</string>
     <string name="responseOk">Correcto</string>
     <string name="responseKo">Incorrecto</string>

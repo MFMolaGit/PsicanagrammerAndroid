@@ -13,7 +13,7 @@
     <item name="review_clicking_subtitle" type="color">#c892463b</item>
     <item name="review_disabled_subtitle" type="color">#c8c1634f</item>
     <item name="review_clicked_subtitle" type="color">#64925337</item>
-    <item name="review_contain" type="color">#1e334392</item>
+    <item name="review_contain" type="color">#1e926056</item>
     <item name="header_table" type="color">#2d000abb</item>
     <item name="odd_row" type="color">#1e926056</item>
     <item name="even_row" type="color">#1e429281</item>

@@ -31,8 +31,8 @@ public class ExpandablePhaseReviewAdapter extends BaseExpandableListAdapter {
             correctsOverResponses, failsOverResponses,
             timeoutsOverResponses,correctsOverWords, timeoutsOverWords,
             latencyCorrects,latencyGeneral,timesCriterial,timeCriterial,
-            ratioCriterial,registersExpander;
-    private TableRow tableContainer;
+            ratioCriterial;
+    private TableRow registersExpander, tableContainer;
     private TableLayout registersTable;
 
     public ExpandablePhaseReviewAdapter(Context context, List<String> listDataHeader,
@@ -77,11 +77,10 @@ public class ExpandablePhaseReviewAdapter extends BaseExpandableListAdapter {
         timesCriterial = (TextView)convertView.findViewById(R.id.timesCriterial);
         timeCriterial = (TextView)convertView.findViewById(R.id.timeCriterial);
         ratioCriterial = (TextView)convertView.findViewById(R.id.ratioCriterial);
-        registersExpander = (TextView)convertView.findViewById(R.id.reviewRegistersSubtitle);
+        registersExpander = (TableRow)convertView.findViewById(R.id.reviewRegistersSubtitle);
         tableContainer = (TableRow) convertView.findViewById(R.id.registersTableRowContainer);
         registersTable = (TableLayout) convertView.findViewById(R.id.registersTable);
 
-        final View finalConvertView = convertView;
         registersExpander.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,20 +95,11 @@ public class ExpandablePhaseReviewAdapter extends BaseExpandableListAdapter {
         
         loadPhase(phaseSelected);
 
-        setColor(groupPosition, convertView);
 
         return convertView;
     }
 
-    private void setColor(final int position, View view) {
-        if(position % 2 == 0) {
-            view.setBackgroundColor(view.getResources().getColor(R.color.odd_row));
-        } else {
-            view.setBackgroundColor(view.getResources().getColor(R.color.even_row));
-        }
-    }
-
-    private void setColor(final int position, TableRow row, final State state) {
+    private void setColor(final TableRow row, final State state) {
         if(state == State.TIMEOUT) {
                 row.setBackgroundColor(row.getResources().getColor(R.color.yellow_odd_row_timeout));
         } else if(state == State.OK) {
@@ -147,7 +137,6 @@ public class ExpandablePhaseReviewAdapter extends BaseExpandableListAdapter {
 
         registersTable.removeViews(1, registersTable.getChildCount()-1);
 
-        int position = 0;
         for(Record record:recordsOnPhase) {
             TableRow newRow = new TableRow(context);
                      newRow.setGravity(Gravity.CENTER);
@@ -183,7 +172,7 @@ public class ExpandablePhaseReviewAdapter extends BaseExpandableListAdapter {
                 stateView.setText(record.getState().value());
                 newRow.addView(stateView);*/
 
-            setColor(position++, newRow, record.getState());
+            setColor(newRow, record.getState());
 
             registersTable.addView(newRow);
         }

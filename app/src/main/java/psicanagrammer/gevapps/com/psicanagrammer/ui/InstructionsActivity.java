@@ -62,7 +62,7 @@ public class InstructionsActivity extends Activity {
                 startActivityForResult(intent,1);
             }
         } else {
-            ActivityUtils.showMessageInToast("Se produjo un error en la aplicación. Reiniciela.", getBaseContext(), getResources().getColor(R.color.red_fail));
+            ActivityUtils.showMessageInToast("Se produjo un error en la aplicación. Reiniciela.", getBaseContext(), getResources().getColor(R.color.red_fail), null, false);
         }
     }
 

@@ -54,7 +54,7 @@ public class ConsultorReviewsActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String fileSelected = reviewsNames.get(position);
 
-                ActivityUtils.showMessageInToast("Has elegido " + fileSelected, getApplicationContext(), getResources().getColor(R.color.white));
+                ActivityUtils.showMessageInToast("Has elegido " + fileSelected, getApplicationContext(), getResources().getColor(R.color.white), null, false);
                 Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
                     intent.putExtra("fileName", fileSelected);
                     startActivity(intent);

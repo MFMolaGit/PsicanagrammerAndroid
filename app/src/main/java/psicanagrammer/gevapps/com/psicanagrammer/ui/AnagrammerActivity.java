@@ -97,7 +97,7 @@ public class AnagrammerActivity extends Activity {
                 timeLeftView.setText(Integer.toString(timeLeft--));
 
                 if (timeLeft == 0 && !initied) {
-                    ActivityUtils.showMessageInToast("¡Se acabó el tiempo!", getBaseContext(), getResources().getColor(R.color.yellow));
+                    ActivityUtils.showMessageInToast("¡Se acabó el tiempo!", getBaseContext(), getResources().getColor(R.color.yellow), null, false);
                     timeLeft = timeLimit;
                     timestamp = new Date();
                     generateRecord(State.TIMEOUT);
@@ -224,7 +224,7 @@ public class AnagrammerActivity extends Activity {
             System.out.println("*************** Generando fichero de informe - OK ******************");
         } catch (Exception e) {
             System.out.println("*************** Generando fichero de informe - KO ******************");
-            ActivityUtils.showMessageInToast(e.getMessage(), getBaseContext(), getResources().getColor(R.color.red_fail));
+            ActivityUtils.showMessageInToast(e.getMessage(), getBaseContext(), getResources().getColor(R.color.red_fail), null, false);
         }
 
         goToEnd();
@@ -249,7 +249,7 @@ public class AnagrammerActivity extends Activity {
             timestamp = new Date();
 
             if(actualResponse.toString().equals(solution)) {
-                ActivityUtils.showMessageInToast("¡Has respondido correctamente!", getBaseContext(), getResources().getColor(R.color.green_correct));
+                ActivityUtils.showMessageInToast("¡Has respondido correctamente!", getBaseContext(), getResources().getColor(R.color.green_correct), null, false);
                 timesView.setText(Integer.toString(++times));
 
                 StringBuilder correct = new StringBuilder(Integer.toString(++corrects));
@@ -260,7 +260,7 @@ public class AnagrammerActivity extends Activity {
                 correctsView.setText(correct);
                 responseOk = true;
             } else {
-                ActivityUtils.showMessageInToast("No es al palabra buscada. Sigue intentádolo.", getBaseContext(), getResources().getColor(R.color.red_fail));
+                ActivityUtils.showMessageInToast("No es al palabra buscada. Sigue intentádolo.", getBaseContext(), getResources().getColor(R.color.red_fail), null,false);
                 failsView.setText(Integer.toString(++fails));
             }
 
