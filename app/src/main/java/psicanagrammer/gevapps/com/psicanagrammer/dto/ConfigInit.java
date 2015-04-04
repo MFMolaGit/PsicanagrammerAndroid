@@ -18,7 +18,20 @@ public class ConfigInit implements Serializable{
     private boolean correctsOverTotalEnabled;
     private boolean failsEnabled;
     private boolean failsOverTotalEnabled;
+	private boolean vibrateEnabled;
 
+	public void setVibrateEnabled(boolean vibrateEnabled)
+	{
+		this.vibrateEnabled = vibrateEnabled;
+	}
+
+	public boolean isVibrateEnabled()
+	{
+		return vibrateEnabled;
+	}
+
+	
+	
     public int getTimeLimit() {
         return timeLimit;
     }

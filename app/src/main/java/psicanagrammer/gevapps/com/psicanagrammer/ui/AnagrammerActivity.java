@@ -249,6 +249,9 @@ public class AnagrammerActivity extends Activity {
             timestamp = new Date();
 
             if(actualResponse.toString().equals(solution)) {
+				if(config.isVibrateEnabled()) {
+					ActivityUtils.vibrate(getBaseContext(), 100);
+				}	
                 ActivityUtils.showMessageInToast("¡Has respondido correctamente!", getBaseContext(), getResources().getColor(R.color.green_correct), null, false);
                 timesView.setText(Integer.toString(++times));
 
@@ -260,7 +263,10 @@ public class AnagrammerActivity extends Activity {
                 correctsView.setText(correct);
                 responseOk = true;
             } else {
-                ActivityUtils.showMessageInToast("No es al palabra buscada. Sigue intentádolo.", getBaseContext(), getResources().getColor(R.color.red_fail), null,false);
+				if(config.isVibrateEnabled()) {
+					ActivityUtils.vibrate(getBaseContext(), 250);
+				}
+				ActivityUtils.showMessageInToast("No es al palabra buscada. Sigue intentádolo.", getBaseContext(), getResources().getColor(R.color.red_fail), null,false);
                 failsView.setText(Integer.toString(++fails));
             }
 
@@ -307,5 +313,10 @@ public class AnagrammerActivity extends Activity {
         if(actualResponse != null && actualResponse.length() > 0)
             actualResponse.setLength(0);
     }
+	
+	@Override
+	public void onBackPressed() {
+    	// do nothing.
+	}
 
 }

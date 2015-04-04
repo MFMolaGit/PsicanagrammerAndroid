@@ -75,4 +75,10 @@ public class InstructionsActivity extends Activity {
             finish();
         }
     }
+	
+	@Override
+	public void onBackPressed() {
+		// do nothing.
+	}
+	
 }

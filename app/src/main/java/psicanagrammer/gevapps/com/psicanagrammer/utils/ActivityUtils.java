@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.os.Vibrator;
 import java.util.List;
 
 /**
@@ -48,4 +48,9 @@ public class ActivityUtils {
         toast.show();
     }
 
+	public static void vibrate(final Context context, final long milliseconds) {
+		Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+			v.vibrate(milliseconds);
+	}
+	
 }

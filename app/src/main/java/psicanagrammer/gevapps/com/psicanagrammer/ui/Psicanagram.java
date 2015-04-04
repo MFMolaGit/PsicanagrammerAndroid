@@ -12,18 +12,21 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import psicanagrammer.gevapps.com.psicanagrammer.R;
 import psicanagrammer.gevapps.com.psicanagrammer.dto.ConfigInit;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.ActivityUtils;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
+import java.util.*;
 
 public class Psicanagram extends Activity {
 
     private Spinner comboGroup;
     private EditText personFieldName;
     private NumberPicker timeLimit;
-    private CheckBox totalTimeCheck,timeleftCheck;
+    private CheckBox totalTimeCheck,timeleftCheck, vibrateCheck;
     private CheckBox correctCheck,correctsOverTotalCheck,failsCheck,failsOverTotalCheck;
     private ConfigInit config;
     private int indexSecondsSelected;
@@ -53,6 +56,7 @@ public class Psicanagram extends Activity {
         correctsOverTotalCheck = (CheckBox)  findViewById(R.id.enableCorrectsOverTotalCheck);
         failsCheck = (CheckBox)  findViewById(R.id.enableFailsCheck);
         failsOverTotalCheck = (CheckBox)  findViewById(R.id.enableFailsOverTotalCheck);
+		vibrateCheck = (CheckBox)  findViewById(R.id.enabledVibrateCheck);
 
             values=new String[12];
 
@@ -92,25 +96,35 @@ public class Psicanagram extends Activity {
     public void initializeProgram(final View view) {
         String pacientName = personFieldName.getText().toString();
         int timeLimitOnSeconds = Integer.parseInt(values[indexSecondsSelected]);
-
-            if(!pacientName.isEmpty() && !getString(R.string.pacientName).equals(pacientName)){
-                config.setPacientName(pacientName);
-                config.setTimeLimit(timeLimitOnSeconds);
-                config.setTotaltimeEnabled(totalTimeCheck.isChecked());
-                config.setTimeleftEnabled(timeleftCheck.isChecked());
-                config.setCorrectsEnabled(correctCheck.isChecked());
-                config.setCorrectsOverTotalEnabled(correctsOverTotalCheck.isChecked());
-                config.setFailsEnabled(failsCheck.isChecked());
-                config.setFailsOverTotalEnabled(failsOverTotalCheck.isChecked());
-
-                Intent intent = new Intent(this, InstructionsActivity.class);
-                    intent.putExtra("config", config);
-                    intent.putExtra("instructionMessage",getString(R.string.instructions1, timeLimitOnSeconds));
-                    intent.putExtra("nextActivity", "AnagrammerActivity");
-                    startActivity(intent);
-            } else {
-                ActivityUtils.showMessageInToast(getString(R.string.configError), getBaseContext(), getResources().getColor(R.color.yellow), null, false);
-            }
+        File reviewsFolder = new File(Constants.FILE_PATH);
+		List<String> filenames = new ArrayList<>();
+		
+			if(reviewsFolder.exists() &&  reviewsFolder.isDirectory()) {
+				filenames = Arrays.asList(reviewsFolder.list());
+			}
+		
+			if(!filenames.contains(pacientName+Constants.XML_EXTENSION)) {
+            	if(!pacientName.isEmpty() && !getString(R.string.pacientName).equals(pacientName)){
+               	 config.setPacientName(pacientName);
+               	 config.setTimeLimit(timeLimitOnSeconds);
+              	  config.setTotaltimeEnabled(totalTimeCheck.isChecked());
+               	 config.setTimeleftEnabled(timeleftCheck.isChecked());
+               	 config.setCorrectsEnabled(correctCheck.isChecked());
+              	  config.setCorrectsOverTotalEnabled(correctsOverTotalCheck.isChecked());
+              	  config.setFailsEnabled(failsCheck.isChecked());
+              	  config.setFailsOverTotalEnabled(failsOverTotalCheck.isChecked());
+				 config.setVibrateEnabled(vibrateCheck.isChecked());
+                	Intent intent = new Intent(this, InstructionsActivity.class);
+                  	  intent.putExtra("config", config);
+                 	   intent.putExtra("instructionMessage",getString(R.string.instructions1, timeLimitOnSeconds));
+             	       intent.putExtra("nextActivity", "AnagrammerActivity");
+                   	 startActivity(intent);
+            	} else {
+                	ActivityUtils.showMessageInToast(getString(R.string.configError), getBaseContext(), getResources().getColor(R.color.yellow), null, false);
+           		}
+			} else {
+				ActivityUtils.showMessageInToast(getString(R.string.configErrorFileRepeat), getBaseContext(), getResources().getColor(R.color.yellow), null, false);
+			}
     }
 
 	public void back(final View view) {

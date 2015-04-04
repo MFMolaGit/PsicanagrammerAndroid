@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import java.io.File;
+import java.util.List;
+import java.util.ArrayList;
 
 import psicanagrammer.gevapps.com.psicanagrammer.R;
 import psicanagrammer.gevapps.com.psicanagrammer.dto.Report;
@@ -61,9 +63,23 @@ public class ReviewActivity extends FragmentActivity {
             intent.putExtra(Intent.EXTRA_SUBJECT, "Psicanagrammer. Informe - " + fileReportName);
             intent.putExtra(Intent.EXTRA_TEXT, "Informe enviado desde app Psicanagrammer");
             intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"belenfelisa.granados@gmail.com", "manuelf.mola@gmail.com"});
-            File fileIn = new File(Constants.FILE_PATH + Constants.FILE_TEXT_EXT.replace("*", fileReportName));
-            Uri fileUri = Uri.fromFile(fileIn);
-            intent.putExtra(Intent.EXTRA_STREAM, fileUri);
-            startActivity(intent);
+			
+			String txtFile = Constants.FILE_PATH + Constants.FILE_TEXT_EXT.replace("*", fileReportName);
+            File fileTxtIn = new File(txtFile);
+            Uri fileUriTxt = Uri.fromFile(fileTxtIn);
+            intent.putExtra(Intent.EXTRA_STREAM, fileUriTxt);
+			
+			/*String xmlFile = Constants.FILE_PATH + Constants.FILE_XML_EXT.replace("*", fileReportName);
+			File fileXmlIn = new File(xmlFile);
+			Uri fileUriXml= Uri.fromFile(fileXmlIn);
+			intent.putExtra(Intent.EXTRA_STREAM, fileUriXml);*/
+		
+			startActivity(intent);
+			
+			/*List<Uri> uris = new ArrayList<Uri>();
+				uris.add(Uri.parse(txtFile));
+				uris.add(Uri.parse(xmlFile));
+			intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+			startActivityForResult(Intent.createChooser(intent, "Sending multiple attachment"), 12345);*/
     }
 }

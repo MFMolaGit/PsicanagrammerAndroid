@@ -53,4 +53,9 @@ public class QuestionsActivity extends ListActivity {
         finish();
     }
 
+	@Override
+	public void onBackPressed() {
+		// do nothing.
+	}
+	
 }
