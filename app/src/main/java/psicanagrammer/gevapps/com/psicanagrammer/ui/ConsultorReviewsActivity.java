@@ -1,6 +1,6 @@
 package psicanagrammer.gevapps.com.psicanagrammer.ui;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,17 +14,16 @@ import android.widget.ListView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Vector;
 
 import psicanagrammer.gevapps.com.psicanagrammer.R;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.ActivityUtils;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
 
-public class ConsultorReviewsActivity extends Activity {
+public class ConsultorReviewsActivity extends ListActivity {
 
-    private ListView reviewsListView;
-    private List<String> reviewsNames;
-    private ArrayAdapter<String> adapterReviews;
+    private Vector<String> reviewsNames;
+    private ConsultorReviewAdapter adapterReviews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +32,12 @@ public class ConsultorReviewsActivity extends Activity {
         setContentView(R.layout.activity_consultor_reviews);
 
         loadReviews();
+
     }
 
     private void loadReviews() {
 
-        reviewsListView = (ListView)findViewById(R.id.reviewsView);
-        reviewsNames = new ArrayList<String>();
+        reviewsNames = new Vector<String>();
 
         File reviewsFolder = new File(Constants.FILE_PATH);
 
@@ -46,31 +45,17 @@ public class ConsultorReviewsActivity extends Activity {
                 reviewsNames.addAll(filterFileInputs(reviewsFolder.list()));
             }
 
-        adapterReviews = new ArrayAdapter<String> ( this, android.R.layout.simple_list_item_1, reviewsNames);
-        reviewsListView.setAdapter(adapterReviews);
-
-        reviewsListView.setOnItemClickListener(new ListView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String fileSelected = reviewsNames.get(position);
-
-                ActivityUtils.showMessageInToast("Has elegido " + fileSelected, getApplicationContext(), getResources().getColor(R.color.white), null, false);
-                Intent intent = new Intent(getApplicationContext(), ReviewActivity.class);
-                    intent.putExtra("fileName", fileSelected);
-                    startActivity(intent);
-            }
-        });
-
+        adapterReviews = new ConsultorReviewAdapter(this, reviewsNames,getApplicationContext());
+		setListAdapter(adapterReviews);
+	
     }
-
-
 
     public void back(final View view) {
         finish();
     }
 
-    private List<String> filterFileInputs(final String[] list) {
-        List<String> finalFiles = new ArrayList<>();
+    private Vector<String> filterFileInputs(final String[] list) {
+        Vector<String> finalFiles = new Vector<>();
 
         for(String file:list) {
             if(file.endsWith(Constants.XML_EXTENSION)) {
