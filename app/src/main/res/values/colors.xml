@@ -25,4 +25,7 @@
     <item name="green_odd_row_correct" type="color">#3c43c32f</item>
     <item name="green_even_row_correct" type="color">#3c286919</item>
 
+    <item name="disabled_button_letter" type="color">#968c8c8c</item>
+    <item name="disabled_text_letter" type="color">#96606060</item>
+
 </resources>

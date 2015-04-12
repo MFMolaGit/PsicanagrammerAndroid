@@ -18,7 +18,7 @@ import android.content.*;
 /**
  * Created by Geva on 06/04/2015.
  */
-public class ConsultorReviewAdapter extends BaseAdapter {
+public class ConsultorReviewAdapter extends BaseAdapter implements ListAdapter {
 
     private final Activity activity;
 	private final Context context;
@@ -51,23 +51,40 @@ public class ConsultorReviewAdapter extends BaseAdapter {
         LayoutInflater inflater = activity.getLayoutInflater();
         View view = inflater.inflate(R.layout.consultor_review_element,null,true);
         TextView reviewItem = (TextView) view.findViewById(R.id.reviewLabel);
-		reviewItem.setText(list.elementAt(position));
+        final String selectedItem = list.elementAt(position);
+		reviewItem.setText(selectedItem);
+
+        //Handle buttons and add onClickListeners
+        ImageButton deleteBtn = (ImageButton)view.findViewById(R.id.deleteBtn);
+        ImageButton gotoBtn = (ImageButton)view.findViewById(R.id.gotoBtn);
+        final ConsultorReviewAdapter ownReference = this;
+
+
+        deleteBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                ActivityUtils.showDialogInToast(context.getString(R.string.confirmDeleteTitle, selectedItem),
+                        context.getString(R.string.confirmDeleteMessage),
+                        context.getResources().getDrawable(android.R.drawable.ic_delete),
+                        context.getString(R.string.confirmedDeletedItem, selectedItem), activity, context, list, position, ownReference);
+            }
+        });
+
+        gotoBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String fileSelected = list.get(position);
+
+                ActivityUtils.showMessageInToast("Has elegido " + fileSelected, context, context.getResources().getColor(R.color.white), null, false);
+                Intent intent = new Intent(context, ReviewActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("fileName", fileSelected);
+                context.startActivity(intent);
+            }
+        });
 
         return view;
     }
-	
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		String fileSelected = list.get(position);
-
-		ActivityUtils.showMessageInToast("Has elegido " + fileSelected, view.getContext(), view.getResources().getColor(R.color.white), null, false);
-		Intent intent = new Intent(view.getContext(), ReviewActivity.class);
-		intent.putExtra("fileName", fileSelected);
-		context.startActivity(intent);
-	}
-
-	public void deleteReview(final View view) {
-		ActivityUtils.showMessageInToast("Has borrado " + "##", context, context.getResources().getColor(R.color.white), null, false);
-	}
 	
 }

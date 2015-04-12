@@ -25,11 +25,17 @@
 			android:layout_weight="10"
 			android:textSize="18sp"/>
 
+        <ImageButton
+            android:id="@+id/gotoBtn"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/ic_menu_view"/>
+
 		<ImageButton
+            android:id="@+id/deleteBtn"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:onClick="deleteReview"
-			android:src="@android:drawable/ic_menu_close_clear_cancel"/>
+			android:src="@android:drawable/ic_menu_delete"/>
 
 	</LinearLayout>
 

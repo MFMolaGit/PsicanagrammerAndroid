@@ -2,6 +2,7 @@ package psicanagrammer.gevapps.com.psicanagrammer.ui;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,8 @@ public class AnagrammerActivity extends Activity {
     private StringBuilder actualResponse;
     private int timeLimit;
     private Date timestamp;
+    private String lastLetterPushed;
+    private int bgColorEnabled, txtColorEnabled, bgColorDisabled, txtColorDisabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class AnagrammerActivity extends Activity {
         config = (ConfigInit)this.getIntent().getExtras().getSerializable("config");
 
         timeLimit = config.getTimeLimit();
+        lastLetterPushed = "";
 
         performVisibility();
 
@@ -69,6 +73,12 @@ public class AnagrammerActivity extends Activity {
             letterButtons[i-1] = (Button) findViewById(id);
             buttonId.deleteCharAt(buttonId.length()-1);
         }
+
+       // ColorDrawable bgcd = (ColorDrawable)letterButtons[0].getBackground();
+       // ColorDrawable txtcd = (ColorDrawable)letterButtons[0].getCurrentTextColor();
+
+        // bgColorEnabled
+
 
         loader = new Loader(this,config.getGroupSelected());
         reportGenerator = new ReportGenerator(loader.getActualGroup(), config.getPacientName());
@@ -233,14 +243,23 @@ public class AnagrammerActivity extends Activity {
     public void addLetter(View view) {
 
         boolean responseOk = false;
+        Button letterPressed = (Button) view;
 
+        /*if(lastLetterPushed.equals(letterPressed.getText())) {
+            //letterPressed.setEnabled(true);
+            letterPressed.setBackgroundColor(bgColorEnabled);
+            letterPressed.setTextColor(txtColorEnabled);
+            lettersPushed--;
+        } else */
         if(lettersPushed <= Constants.CHARACTERS_LIMIT) {
-            Button letterPressed = (Button) view;
             actualResponse.append(letterPressed.getText());
             anagram.setText(actualResponse.toString());
+            //letterPressed.setBackgroundColor(bgColorDisabled);
+            //letterPressed.setTextColor(txtColorDisabled);
             letterPressed.setEnabled(false);
             lettersPushed++;
             letterCountView.setText(Integer.toString(lettersPushed));
+            //lastLetterPushed = String.valueOf(letterPressed.getText());
         }
 
         if(lettersPushed == Constants.CHARACTERS_LIMIT) {

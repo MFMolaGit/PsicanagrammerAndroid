@@ -28,7 +28,7 @@
     <string name="readyLabelButton">Listo para empezar</string>
     <string name="title_activity_instruction_anagrams">InstructionActivity</string>
     <string name="instructions1">A continuación aparecerá en la pantalla  una secuencia de palabras desordenadas, usted dispondrá de <xliff:g id="seconds" example="30">%s</xliff:g> segundos para ordenar las letras y formar la palabra. Debe pulsar las teclas para escribir la palabra ordenada. *IMPORTANTE: No se admite como solución ninguna forma verbal ni nombres propios. Ánimo y mucha suerte.</string>
-    <string name="instructions2">A continuación vas a encontrar una serie de cuestiones relacionadas con la tarea de anagramas que acabas de realizar. Indica el grado en que estás de acuerdo con cada una, en una escala del 1 (estás muy de acuerdo con la afirmación) al 10 (estás muy en desacuerdo con la afirmación) pulsando el número correspondiente.</string>
+    <string name="instructions2">A continuación vas a encontrar una serie de cuestiones relacionadas con la tarea de anagramas que acabas de realizar. Indica el grado en que estás de acuerdo con cada una, en una escala del 1 (estás muy en desacuerdo con la afirmación) al 10 (estás muy de acuerdo con la afirmación) pulsando el número correspondiente.</string>
     <string name="title_activity_questions">QuestionsActivity</string>
     <string name="endQuestionsLabelButton">Confirmar respuestas</string>
     <string name="emptyQuestionsList">Sin preguntas disponibles</string>
@@ -60,6 +60,11 @@
     <string name="responseTableLabel">Respuesta</string>
     <string name="timeTableLabel">Tiempo</string>
     <string name="stateTableLabel">Estado</string>
+    <string name="confirmDeleteMessage">¿Estás seguro/a de borrar el informe seleccionado?</string>
+    <string name="confirmDeleteTitle">Borrando informe %1$s</string>
+    <string name="confirmedDeletedItem">Has borrado el informe %1$s</string>
+    <string name="accept">Sí</string>
+    <string name="decline">No</string>
 
     <string-array name="HeadersRegisterTable">
         <item>@string/hourTableLabel</item>
