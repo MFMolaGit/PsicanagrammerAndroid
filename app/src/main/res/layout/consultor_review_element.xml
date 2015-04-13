@@ -31,6 +31,12 @@
             android:layout_width="wrap_content"
             android:src="@android:drawable/ic_menu_view"/>
 
+        <ImageButton
+            android:id="@+id/renameBtn"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/ic_menu_edit"/>
+
 		<ImageButton
             android:id="@+id/deleteBtn"
 			android:layout_height="wrap_content"

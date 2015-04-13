@@ -63,8 +63,14 @@
     <string name="confirmDeleteMessage">¿Estás seguro/a de borrar el informe seleccionado?</string>
     <string name="confirmDeleteTitle">Borrando informe %1$s</string>
     <string name="confirmedDeletedItem">Has borrado el informe %1$s</string>
-    <string name="accept">Sí</string>
-    <string name="decline">No</string>
+    <string name="confirmedRenamedItem">Has renombrado el informe a %1$s</string>
+    <string name="confirmRenameItem">Renombrando informe %1$s</string>
+    <string name="renameFail2">El nombre escogido no es válido. Elija otro.</string>
+    <string name="renameFail1">El nombre escogido ya existe. Elija otro.</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="accept">Aceptar</string>
+    <string name="decline">Cancelar</string>
 
     <string-array name="HeadersRegisterTable">
         <item>@string/hourTableLabel</item>

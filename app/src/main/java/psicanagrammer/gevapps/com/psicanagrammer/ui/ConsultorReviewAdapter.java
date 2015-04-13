@@ -1,11 +1,15 @@
 package psicanagrammer.gevapps.com.psicanagrammer.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import java.io.File;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -23,6 +27,7 @@ public class ConsultorReviewAdapter extends BaseAdapter implements ListAdapter {
     private final Activity activity;
 	private final Context context;
     private final Vector<String> list;
+    private String newReviewName = "";
 
     public ConsultorReviewAdapter(final Activity activity, Vector<String> list, final Context context) {
         super();
@@ -52,11 +57,14 @@ public class ConsultorReviewAdapter extends BaseAdapter implements ListAdapter {
         View view = inflater.inflate(R.layout.consultor_review_element,null,true);
         TextView reviewItem = (TextView) view.findViewById(R.id.reviewLabel);
         final String selectedItem = list.elementAt(position);
+
 		reviewItem.setText(selectedItem);
 
         //Handle buttons and add onClickListeners
         ImageButton deleteBtn = (ImageButton)view.findViewById(R.id.deleteBtn);
         ImageButton gotoBtn = (ImageButton)view.findViewById(R.id.gotoBtn);
+        ImageButton renameBtn = (ImageButton)view.findViewById(R.id.renameBtn);
+
         final ConsultorReviewAdapter ownReference = this;
 
 
@@ -68,6 +76,78 @@ public class ConsultorReviewAdapter extends BaseAdapter implements ListAdapter {
                         context.getString(R.string.confirmDeleteMessage),
                         context.getResources().getDrawable(android.R.drawable.ic_delete),
                         context.getString(R.string.confirmedDeletedItem, selectedItem), activity, context, list, position, ownReference);
+            }
+        });
+
+        renameBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setTitle(context.getString(R.string.confirmRenameItem, selectedItem));
+                final StringBuilder sFileTxt = new StringBuilder(Constants.FILE_PATH)
+                        .append(Constants.FILE_TEXT_EXT.replace("*", selectedItem));
+                final StringBuilder sFileXml = new StringBuilder(Constants.FILE_PATH)
+                        .append(Constants.FILE_XML_EXT.replace("*", selectedItem));
+
+                // Set up the input
+                final EditText input = new EditText(context);
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                input.setTextColor(context.getResources().getColor(R.color.black));
+                builder.setView(input);
+
+                // Set up the buttons
+                builder.setPositiveButton(context.getString(R.string.accept), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        newReviewName = input.getText().toString();
+                        File fileTxt = new File(sFileTxt.toString());
+                        File fileXml = new File(sFileXml.toString());
+
+                        if(newReviewName.isEmpty()) {
+                            ActivityUtils.showMessageInToast(context.getString(R.string.renameFail2), context,
+                                    context.getResources().getColor(R.color.red), null, false);
+                        } else if(!list.contains(newReviewName)) {
+
+                            StringBuilder sNewFileTxt = new StringBuilder(Constants.FILE_PATH)
+                                    .append(Constants.FILE_TEXT_EXT.replace("*", newReviewName));
+                            StringBuilder sNewFileXml = new StringBuilder(Constants.FILE_PATH)
+                                    .append(Constants.FILE_XML_EXT.replace("*", newReviewName));
+
+                            File newFileTxt = new File(sNewFileTxt.toString());
+                            File newFileXml = new File(sNewFileXml.toString());
+                            boolean renamed = false;
+
+                            if (!newFileTxt.exists()) {
+                               renamed |= fileTxt.renameTo(newFileTxt);
+                            }
+
+                            if (!newFileXml.exists()) {
+                               renamed |= fileXml.renameTo(newFileXml);
+                            }
+
+                            if(renamed) {
+                                ActivityUtils.showMessageInToast(context.getString(R.string.confirmedRenamedItem, newReviewName),
+                                        context, context.getResources().getColor(R.color.white), null, false);
+                            }
+                        } else {
+                            ActivityUtils.showMessageInToast(context.getString(R.string.renameFail1), context,
+                                    context.getResources().getColor(R.color.yellow), null, false);
+                        }
+
+                        list.removeElementAt(position);
+                        list.insertElementAt(newReviewName, position);
+                        ownReference.notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton(context.getString(R.string.decline), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
             }
         });
 

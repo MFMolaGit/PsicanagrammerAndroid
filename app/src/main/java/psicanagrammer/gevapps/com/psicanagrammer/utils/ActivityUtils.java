@@ -72,7 +72,7 @@ public class ActivityUtils {
         alertDialog.setIcon(icon);
 
         // Setting Positive "Yes" Button
-        alertDialog.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
                 StringBuilder sFileTxt = new StringBuilder(Constants.FILE_PATH)
                         .append(Constants.FILE_TEXT_EXT.replace("*",list.get(item)));
@@ -101,7 +101,7 @@ public class ActivityUtils {
         });
 
         // Setting Negative "NO" Button
-        alertDialog.setNegativeButton(R.string.decline, new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
