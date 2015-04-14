@@ -13,6 +13,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import psicanagrammer.gevapps.com.psicanagrammer.dto.Group;
 import psicanagrammer.gevapps.com.psicanagrammer.dto.Report;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
 
@@ -26,7 +27,7 @@ public class SAXReportLoader implements Readable {
 
     public SAXReportLoader(final String pacientName) {
         this.pacientName = pacientName;
-        this.fileReportName = Constants.FILE_PATH+"/"+pacientName;
+        this.fileReportName = Constants.FILE_PATH+pacientName;
     }
 
     @Override
@@ -49,6 +50,14 @@ public class SAXReportLoader implements Readable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return reportXMLHandler.getReport();
+
+        Report report = reportXMLHandler.getReport();
+        Group group = report.getGroup();
+
+        int calculatedCorrectSeconds = (int)group.getCorrectResponseLatency()*group.getCorrectsCount();
+        int calculatedFailsSeconds = (int) ((group.getResponseLatency() * (group.getCorrectsCount() + group.getFailsCount()))) - calculatedCorrectSeconds;
+            group.setCorrectSeconds(calculatedCorrectSeconds);
+            group.setFailSeconds(calculatedFailsSeconds);
+        return report;
     }
 }

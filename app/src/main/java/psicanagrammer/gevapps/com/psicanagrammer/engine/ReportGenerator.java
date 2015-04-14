@@ -18,6 +18,14 @@ public class ReportGenerator implements Serializable {
     private Report report;
     private Reportable generatorSAX, generatorFile;
 
+    public ReportGenerator(final Report report, final String pacientName) {
+        this.report = report;
+        report.setFileReportName(pacientName);
+
+        generatorSAX = new SAXReporter(pacientName,report);
+        generatorFile  = new FileReporter(pacientName,report);
+    }
+
     public ReportGenerator(final Group activeGroup, final String pacientName) {
         groupsLoaded = activeGroup;
 
@@ -70,5 +78,9 @@ public class ReportGenerator implements Serializable {
 
     public void setResultQuestions(QuestionResults resultQuestions) {
         report.setResultQuestions(resultQuestions);
+    }
+
+    public void setTimestamp(final Date timestamp) {
+        report.setTimestamp(timestamp);
     }
 }

@@ -241,10 +241,12 @@ public class Group implements Cloneable, Serializable {
         Group clonedGroup = (Group) super.clone();
         List<Phase> clonedRegisterList = new ArrayList<>();
 
-        clonedGroup.setSeconds(0);
-        clonedGroup.setCorrectsCount(0);
-        clonedGroup.setFailsCount(0);
-        clonedGroup.setTimeoutsCount(0);
+        clonedGroup.setSeconds(seconds);
+        clonedGroup.setCorrectsCount(correctsCount);
+        clonedGroup.setFailsCount(failsCount);
+        clonedGroup.setTimeoutsCount(timeoutsCount);
+        clonedGroup.setCorrectSeconds(correctSeconds);
+        clonedGroup.setFailSeconds(failSeconds);
 
         for(Phase phase:clonedGroup.getRegisterList()) {
             Phase clonedPhase = (Phase)phase.clone();

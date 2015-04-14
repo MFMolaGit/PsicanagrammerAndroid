@@ -30,8 +30,15 @@ public class SAXReporter extends Reporter {
     @Override
     public void generateReport() {
         Date timestamp = new Date();
-        report.setTimestamp(timestamp);
-        String sTimestamp = Constants.SIMPLE_DATE_FORMAT.format(timestamp);
+        String sTimestamp = "";
+
+        if(report.getTimestamp() == null) {
+            report.setTimestamp(timestamp);
+            sTimestamp = Constants.SIMPLE_DATE_FORMAT.format(timestamp);
+        } else {
+            sTimestamp = Constants.SIMPLE_DATE_FORMAT.format(report.getTimestamp());
+        }
+
         XmlSerializer serializer = Xml.newSerializer();
         try {
             OutputStream out = new FileOutputStream(fileReportName);

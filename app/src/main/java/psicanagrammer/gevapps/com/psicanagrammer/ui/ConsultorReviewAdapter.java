@@ -10,10 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Vector;
 
 import psicanagrammer.gevapps.com.psicanagrammer.R;
+import psicanagrammer.gevapps.com.psicanagrammer.dto.Report;
+import psicanagrammer.gevapps.com.psicanagrammer.engine.ReportGenerator;
+import psicanagrammer.gevapps.com.psicanagrammer.engine.SAXReportLoader;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.Constants;
 import android.widget.*;
 import psicanagrammer.gevapps.com.psicanagrammer.utils.*;
@@ -28,6 +32,8 @@ public class ConsultorReviewAdapter extends BaseAdapter implements ListAdapter {
 	private final Context context;
     private final Vector<String> list;
     private String newReviewName = "";
+    private SAXReportLoader xmlLoader;
+    private ReportGenerator fileGenerator;
 
     public ConsultorReviewAdapter(final Activity activity, Vector<String> list, final Context context) {
         super();
@@ -84,10 +90,12 @@ public class ConsultorReviewAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 builder.setTitle(context.getString(R.string.confirmRenameItem, selectedItem));
+                final String oldXmlFile = Constants.FILE_XML_EXT.replace("*", selectedItem);
+                String oldTxtFile = Constants.FILE_TEXT_EXT.replace("*", selectedItem);
                 final StringBuilder sFileTxt = new StringBuilder(Constants.FILE_PATH)
-                        .append(Constants.FILE_TEXT_EXT.replace("*", selectedItem));
+                        .append(oldTxtFile);
                 final StringBuilder sFileXml = new StringBuilder(Constants.FILE_PATH)
-                        .append(Constants.FILE_XML_EXT.replace("*", selectedItem));
+                        .append(oldXmlFile);
 
                 // Set up the input
                 final EditText input = new EditText(context);
@@ -109,35 +117,49 @@ public class ConsultorReviewAdapter extends BaseAdapter implements ListAdapter {
                                     context.getResources().getColor(R.color.red), null, false);
                         } else if(!list.contains(newReviewName)) {
 
+                            String txtFile = Constants.FILE_TEXT_EXT.replace("*", newReviewName);
                             StringBuilder sNewFileTxt = new StringBuilder(Constants.FILE_PATH)
-                                    .append(Constants.FILE_TEXT_EXT.replace("*", newReviewName));
+                                    .append(txtFile);
+                            String xmlFile = Constants.FILE_XML_EXT.replace("*", newReviewName);
                             StringBuilder sNewFileXml = new StringBuilder(Constants.FILE_PATH)
-                                    .append(Constants.FILE_XML_EXT.replace("*", newReviewName));
+                                    .append(xmlFile);
 
                             File newFileTxt = new File(sNewFileTxt.toString());
                             File newFileXml = new File(sNewFileXml.toString());
                             boolean renamed = false;
 
-                            if (!newFileTxt.exists()) {
-                               renamed |= fileTxt.renameTo(newFileTxt);
+                            if (!newFileXml.exists()) {
+                               xmlLoader = new SAXReportLoader(oldXmlFile);
+                               Report loaded = xmlLoader.readReport();
+                               fileGenerator = new ReportGenerator(loaded, newReviewName);
+                               fileGenerator.setResultQuestions(loaded.getResultQuestions());
+                               fileGenerator.setTimestamp(loaded.getTimestamp());
+
+                               if((renamed |= fileXml.delete())) {
+                                   try {
+                                       fileGenerator.generateReport();
+                                   } catch (IOException e) {
+                                       e.printStackTrace();
+                                   }
+                               }
                             }
 
-                            if (!newFileXml.exists()) {
-                               renamed |= fileXml.renameTo(newFileXml);
+                            if (renamed && !newFileTxt.exists()) {
+                                renamed |= fileTxt.delete();
                             }
 
                             if(renamed) {
                                 ActivityUtils.showMessageInToast(context.getString(R.string.confirmedRenamedItem, newReviewName),
                                         context, context.getResources().getColor(R.color.white), null, false);
+
+                                list.removeElementAt(position);
+                                list.insertElementAt(newReviewName, position);
+                                ownReference.notifyDataSetChanged();
                             }
                         } else {
                             ActivityUtils.showMessageInToast(context.getString(R.string.renameFail1), context,
                                     context.getResources().getColor(R.color.yellow), null, false);
                         }
-
-                        list.removeElementAt(position);
-                        list.insertElementAt(newReviewName, position);
-                        ownReference.notifyDataSetChanged();
                     }
                 });
                 builder.setNegativeButton(context.getString(R.string.decline), new DialogInterface.OnClickListener() {

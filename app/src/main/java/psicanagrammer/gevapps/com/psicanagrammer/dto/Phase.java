@@ -267,10 +267,12 @@ public class Phase implements Cloneable, Serializable {
         Phase clonedPhase = (Phase) super.clone();
 
         clonedPhase.setRegisterList(new ArrayList<Record>());
-        clonedPhase.setSeconds(0);
-        clonedPhase.setCorrectsCount(0);
-        clonedPhase.setFailsCount(0);
-        clonedPhase.setTimeoutsCount(0);
+        clonedPhase.setSeconds(seconds);
+        clonedPhase.setCorrectsCount(correctsCount);
+        clonedPhase.setFailsCount(failsCount);
+        clonedPhase.setTimeoutsCount(timeoutsCount);
+        clonedPhase.setCorrectSeconds(correctSeconds);
+        clonedPhase.setFailSeconds(failSeconds);
 
         return clonedPhase;
     }
